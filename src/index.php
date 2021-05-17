@@ -244,6 +244,21 @@
 
 		<button class="button button_accent prices__pricelist-unroll">Показать всё</button>
 	</div>
+
+	<div class="container">
+		<div class="delivery-form">
+			<div class="delivery-form__title">Приедем к вам за 30 минут <span class="line-break">Бесплатно!</span></div>
+			<div class="delivery-form__subtitle">Оставьте свой номер телефона <span class="line-break">перезвоним через 2 минуты</span></div>
+			<form action="./assets/configs/mail.php" method="POST">
+				<input type="text" class="delivery-form__input" placeholder="+7 (___) ___-__-__">
+				<button type="submit" class="button button_callback delivery-form__button">Перезвоните мне</button>
+			</form>
+			<picture>
+				<source srcset="./assets/images/webp/delivery-car.webp" type="image/webp">
+				<img src="./assets/images/delivery-car.png" alt="Машина" class="delivery-form__img">
+			</picture>
+		</div>
+	</div>
 </section>
 </body>
 </html>

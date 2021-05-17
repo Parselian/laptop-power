@@ -195,6 +195,8 @@ button {
   padding-top: 120px;
   padding-bottom: 100px;
   background-color: #2F2F2F; }
+  .prices__wrap {
+    margin-bottom: 80px; }
   .prices__title {
     margin-bottom: 50px; }
   .prices__devices {
@@ -342,6 +344,43 @@ button {
       margin-right: auto;
       display: block; }
 
+.delivery-form {
+  position: relative;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-bottom: 40px;
+  width: 100%;
+  max-width: 750px;
+  transform: translateX(-70px);
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #B3FEBF;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px; }
+  .delivery-form__title {
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: 600; }
+  .delivery-form__subtitle {
+    margin-bottom: 50px;
+    font-size: 16px; }
+  .delivery-form__input {
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 180px;
+    font-size: 16px;
+    color: #9E9E9E;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; }
+  .delivery-form__img {
+    position: absolute;
+    content: '';
+    top: 50%;
+    transform: translateY(-50%);
+    right: -200px; }
+
 @media (max-width: 992px) {
   .burger-btn {
     display: flex; }
@@ -388,7 +427,14 @@ button {
       .prices__pricelist-item-label, .prices__pricelist-item-button {
         display: none; }
       .prices__pricelist-item-button {
-        margin-right: 25px; } }
+        margin-right: 25px; }
+  .delivery-form {
+    width: 580px; }
+    .delivery-form__title {
+      font-size: 30px; }
+    .delivery-form__img {
+      width: 310px;
+      right: -150px; } }
 
 @media (max-width: 768px) {
   .promo {
@@ -411,7 +457,23 @@ button {
   .features__feature:first-child {
     margin-right: 30px; }
   .features__feature:last-child {
-    margin-top: 30px; } }
+    margin-top: 30px; }
+  .prices__wrap {
+    margin-bottom: 170px; }
+  .delivery-form {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    max-width: 100%;
+    text-align: center;
+    transform: unset; }
+    .delivery-form__img {
+      top: -159px;
+      width: 240px;
+      left: 50%;
+      right: unset;
+      transform: translateX(-50%); } }
 
 @media (max-width: 576px) {
   .section__title {
@@ -436,7 +498,16 @@ button {
       align-items: center; }
     .promo__button:not(:last-child) {
       margin-right: 0;
-      margin-bottom: 15px; } }
+      margin-bottom: 15px; }
+  .delivery-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .delivery-form__input, .delivery-form__button {
+    width: 90%; }
+  .delivery-form__input {
+    margin-right: 0;
+    margin-bottom: 15px; } }
 
 @media (max-width: 420px) {
   .features {

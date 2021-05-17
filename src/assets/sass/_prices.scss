@@ -2,6 +2,9 @@
   padding-top: 120px;
   padding-bottom: 100px;
   background-color: $alt-bg-color;
+  &__wrap {
+    margin-bottom: 80px;
+  }
   &__title {
     margin-bottom: 50px;
   }
