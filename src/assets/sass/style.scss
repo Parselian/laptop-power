@@ -5,6 +5,32 @@ body {
   font-family: 'Roboto', sans-serif, -apple-system;
 }
 
+.section {
+  &__title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 36px;
+    &:after {
+      position: absolute;
+      content: '';
+      bottom: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 10px;
+      background: url('../images/svg/tail_dark.svg') center no-repeat;
+      background-size: cover;
+    }
+    &_alt {
+      &:after {
+        background: url('../images/svg/tail_light.svg') center no-repeat;
+      }
+      color: $alt-text-color;
+    }
+  }
+}
+
 button {
   cursor: pointer;
 }
@@ -19,6 +45,8 @@ button {
     background-color: $accent-color;
   }
   &_accent {
+    background-color: $interaction-color;
+    color: $alt-text-color;
     &-transparent {
       padding: 8px 25px;
       color: $interaction-color;
@@ -38,4 +66,6 @@ button {
 @import "burger";
 @import "header";
 @import "promo";
+@import "features";
+@import "prices";
 @import "media";
