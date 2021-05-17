@@ -1,0 +1,36 @@
+.header {
+  top: 0;
+  position: sticky;
+  z-index: 1;
+  &__wrap {
+    padding-top: 26px;
+    padding-bottom: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+  }
+  &__logo {
+    height: 40px;
+    width: 120px;
+  }
+  &__nav {
+    font-size: 18px;
+    &-item {
+      color: $alt-text-color;
+      text-decoration: none;
+      &:not(:last-child) {
+        margin-right: 35px
+      }
+    }
+  }
+  &__contacts {
+    &-phone {
+      display: block;
+      font-size: 26px;
+      font-weight: 500;
+      color: $alt-text-color;
+      text-decoration: none;
+    }
+  }
+}
