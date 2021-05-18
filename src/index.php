@@ -490,5 +490,44 @@
 			<a href="#" class="text_accent questions__form-link">персональных данных</a></div>
 	</div>
 </section>
+
+<section class="contacts">
+	<div class="container contacts__wrap">
+		<div class="contacts__block">
+			<div class="contacts__block-wrap">
+				<h3 class="contacts__block-title">Наши контакты:</h3>
+				<div class="contacts__block-item">
+					<svg class="contacts__block-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#placeholder"></use>
+					</svg>
+					<div class="contacts__block-item-text">
+						190015, Санкт-Петербург, Московский пр-т д.7
+					</div>
+				</div>
+				<div class="contacts__block-item">
+					<svg class="contacts__block-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#phone-call"></use>
+					</svg>
+					<a href="tel:<?=$phone_link?>" class="contacts__block-item-link"><?=$phone_format?></a>
+				</div>
+			</div>
+
+
+			<div class="contacts__block-wrap">
+				<h3 class="contacts__block-title">Мы работаем:</h3>
+				<div class="contacts__block-item">
+					<svg class="contacts__block-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+					</svg>
+					<div class="contacts__block-item-text">
+						с 8:00 до 23:00 <span class="line-break">Без выходных</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="map" class="contacts__map"></div>
+</section>
 </body>
 </html>
