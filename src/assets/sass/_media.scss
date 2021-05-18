@@ -360,6 +360,22 @@
       }
     }
   }
+  .questions {
+    &__title {
+      margin-bottom: 18px;
+    }
+    &__subtitle {
+      font-size: 20px;
+    }
+    &__form {
+      &-input, &-button {
+        font-size: 18px;
+      }
+      &-input {
+        max-width: 220px;
+      }
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -440,6 +456,20 @@
         &-text {
           font-size: 14px;
         }
+      }
+    }
+  }
+  .questions {
+    &__form {
+      flex-direction: column;
+      align-items: center;
+      &-input {
+        margin-right: 0;
+        margin-bottom: 15px;
+        max-width: 100%;
+      }
+      &-button {
+        width: 100%;
       }
     }
   }

@@ -477,5 +477,18 @@
 		</div>
 	</div>
 </section>
+
+<section class="questions">
+	<div class="container questions__wrap">
+		<h2 class="section__title questions__title">Остались вопросы?</h2>
+		<div class="section__subtitle questions__subtitle">Оставьте свой номер телефона, мы свяжемся с вами через 2 минуты</div>
+		<form action="" class="questions__form">
+			<input type="text" class="questions__form-input" placeholder="+7 (___) ___-__-__">
+			<button type="submit" class="button questions__form-button">Перезвоните мне</button>
+		</form>
+		<div class="questions__form-footnote">Нажимая на кнопку "Перезвоните мне" вы соглашаетесь с политикой обработки
+			<a href="#" class="text_accent questions__form-link">персональных данных</a></div>
+	</div>
+</section>
 </body>
 </html>
