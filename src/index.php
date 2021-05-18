@@ -529,5 +529,32 @@
 
 	<div id="map" class="contacts__map"></div>
 </section>
+
+<footer class="footer">
+<div class="container footer__wrap">
+  <div class="footer__col">
+	<img src="./assets/images/svg/logo.svg" alt="logo" class="footer__logo">
+	<div class="footer__billings">
+	  <img src="./assets/images/svg/visa.svg" alt="visa" class="footer__billing">
+	  <img src="./assets/images/svg/mastercard.svg" alt="mastercard" class="footer__billing">
+	  <img src="./assets/images/sber.png" alt="sber" class="footer__billing">
+	  <img src="./assets/images/rub.png" alt="cash" class="footer__billing">
+	</div>
+  </div>
+  <nav class="footer__col footer__nav">
+	<a href="#prices" class="footer__nav-link">Цены</a>
+	<a href="#about" class="footer__nav-link">О нас</a>
+	<a href="#faq" class="footer__nav-link">Отзывы</a>
+	<a href="#contacts" class="footer__nav-link">Контакты</a>
+  </nav>
+  <div class="footer__col footer__contacts">
+	<a href="tel:<?= $phone_link?>" class="footer__phone"><?= $phone_format?></a>
+	<div class="footer__worktime">C 8:00 до 23:00 без выходных</div>
+  </div>
+</div>
+<div class="container footer__footnote">
+  Сервисный центр <?= $company_name?>. Acer, Asus, HP, Apple, Lenovo, MSI, Dell, Xiaomi, Sony, Samsung, LG, Honor, Huawei, Prettec, Irbis и их логотипы являются зарегистрированными товарными знаками в США и других странах. Информация опубликованная на сайте не является публичной офертой, определяемой положениями Статьи 437 ГК РФ. Цены указаны за услугу, запчасти в эту стоимость не входят.
+</div>
+</footer>
 </body>
 </html>
