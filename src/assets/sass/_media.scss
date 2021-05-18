@@ -14,6 +14,14 @@
       }
     }
   }
+  .team {
+    &__card {
+      width: 220px;
+      &-img {
+        height: 240px;
+      }
+    }
+  }
 }
 
 @media (max-width: 992px) {
@@ -145,6 +153,24 @@
       &-text {
         text-align: left;
         font-size: 20px;
+      }
+    }
+  }
+  .team {
+    &__card {
+      &s {
+        flex-wrap: wrap;
+      }
+      width: 46%;
+      max-width: 100%;
+      &:nth-child(odd) {
+        margin-right: 4%;
+      }
+      &:nth-child(-n+2) {
+        margin-bottom: 40px;
+      }
+      &-img {
+        height: 300px;
       }
     }
   }
@@ -343,6 +369,27 @@
     &__block {
       &-text {
         font-size: 18px;
+      }
+    }
+  }
+  .team {
+    &__card {
+      &s {
+        flex-direction: column;
+      }
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      max-width: 240px;
+      text-align: center;
+      &:nth-child(odd) {
+        margin-right: auto;
+      }
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
+      &-img {
+        height: 250px;
       }
     }
   }

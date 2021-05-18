@@ -332,5 +332,58 @@
 		<img src="./assets/images/steps-bg.jpg" alt="Материнская плата MacBook" class="steps__bg">
 	</picture>
 </section>
+
+<section class="team">
+	<div class="container team__wrap">
+		<h2 class="section__title">Опытные мастера</h2>
+		<div class="section__subtitle">
+			В сервисном центре <?= $company_name ?> работают только <span class="line-break">мастера с опытом работы от 3-х лет.</span>
+		</div>
+
+		<div class="team__cards">
+			<div class="team__card">
+				<picture>
+					<source srcset="./assets/images/webp/engineer_1.webp" type="image/webp">
+					<img src="./assets/images/engineer_1.jpg" alt="Фото инженера" class="team__card-img">
+				</picture>
+				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-position">Старший инженер</h3>
+				<div class="team__card-experience">Ремонтирует компьютерную технику с 2014 г.</div>
+				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+			</div>
+
+			<div class="team__card">
+				<picture>
+					<source srcset="./assets/images/webp/engineer_2.webp" type="image/webp">
+					<img src="./assets/images/engineer_2.jpg" alt="Фото инженера" class="team__card-img"></picture>
+				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-position">Инженер</h3>
+				<div class="team__card-experience">Ремонтирует компьютерную технику с 2017 г.</div>
+				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+			</div>
+
+			<div class="team__card">
+				<picture>
+					<source srcset="./assets/images/webp/engineer_3.webp" type="image/webp">
+					<img src="./assets/images/engineer_3.jpg" alt="Фото инженера" class="team__card-img"></picture>
+				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-position">Инженер</h3>
+				<div class="team__card-experience">Ремонтирует компьютерную технику с 2018 г.</div>
+				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+			</div>
+
+			<div class="team__card">
+				<picture>
+					<source srcset="./assets/images/webp/engineer_4.webp" type="image/webp">
+					<img src="./assets/images/engineer_4.jpg" alt="Фото инженера" class="team__card-img"></picture>
+				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-position">Инженер</h3>
+				<div class="team__card-experience">Ремонтирует компьютерную технику с 2016 г.</div>
+				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+			</div>
+		</div>
+		<button class="button button_callback team__button">Вызвать мастера</button>
+	</div>
+</section>
 </body>
 </html>
