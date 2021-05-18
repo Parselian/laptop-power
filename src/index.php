@@ -260,5 +260,77 @@
 		</div>
 	</div>
 </section>
+
+<section class="reviews">
+	<div class="container reviews__wrap">
+		<h2 class="section__title">Нас выбирают клиенты</h2>
+		<div class="section__subtitle">
+			Наши квалифицированные мастера дарят
+			<span class="line-break">Вашим устройствам вторую жизнь</span>
+		</div>
+		<div class="reviews__slider">
+			<div class="reviews__slide">
+				<p class="reviews__slide-text">
+					Обращался в эту мастерскую после того как уронил макбук, у которого разбился экран и погнулся корпус. Неисправность
+					устранили, для этого пришлось заменить экран и винчестер. После ремонта ноутбук работает без замечаний. Из неприятных
+					моментов только ситуация с неперезвоном- пообещали что мастер перезвонит через 5 минут, но так и не позвонил. Пришлось
+					звонить самому. В остальном все хорошо.
+				</p>
+				<div class="reviews__slide-info">
+					<div class="reviews__slide-rating">
+						<div class="reviews__slide-rating-title">Рейтинг:</div>
+						<div class="reviews__slide-rating-number">4.4</div>
+					</div>
+					<div class="reviews__slide-reviewer">
+						<div class="reviews__slide-reviewer-info">
+							<div class="reviews__slide-reviewer-name">Валентин П.</div>
+							<div class="reviews__slide-reviewer-problem">Замена матрицы на ноутбуке</div>
+						</div>
+						<picture>
+							<source srcset="./assets/images/webp/reviewer_1.webp" type="image/webp">
+							<img src="./assets/images/reviewer_1.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
+						</picture>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="steps">
+	<div class="container steps__wrap">
+		<h2 class="section__title section__title_alt steps__title">Как мы работаем?</h2>
+		<div class="steps__blocks">
+			<div class="steps__block">
+				<div class="steps__block-number">1</div>
+				<div class="steps__block-text">
+					<span class="text_accent">Оставьте заявку</span> на ремонт по телефону или на сайте
+				</div>
+			</div>
+			<div class="steps__block">
+				<div class="steps__block-number">2</div>
+				<div class="steps__block-text">
+					Ожидайте мастера. выезд и диагностика - <span class="text_accent">бесплатно</span>
+				</div>
+			</div>
+			<div class="steps__block">
+				<div class="steps__block-number">3</div>
+				<div class="steps__block-text">
+					Ремонтируем Ваше устройство. Ремонт занимает <span class="text_accent">от 30 минут</span>
+				</div>
+			</div>
+			<div class="steps__block">
+				<div class="steps__block-number">4</div>
+				<div class="steps__block-text">
+					Проверяете качество ремонта и получаете <span class="text_accent">пожизненную</span> гарантию
+				</div>
+			</div>
+		</div>
+	</div>
+	<picture>
+		<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
+		<img src="./assets/images/steps-bg.jpg" alt="Материнская плата MacBook" class="steps__bg">
+	</picture>
+</section>
 </body>
 </html>

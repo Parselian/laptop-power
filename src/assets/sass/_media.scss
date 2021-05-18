@@ -1,3 +1,21 @@
+@media (max-width: 1200px) {
+  .steps {
+    &__block {
+      max-width: 200px;
+      &-number {
+        font-size: 32px;
+        &:before {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      &-text {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 @media (max-width: 992px) {
   .burger-btn {
     display: flex;
@@ -62,6 +80,7 @@
     }
     &__pricelist {
       &-item {
+        padding: 5px 10px;
         border: 1px solid $border-color;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -90,6 +109,43 @@
     &__img {
       width: 310px;
       right: -150px;
+    }
+  }
+  .reviews {
+    &__slide {
+      &-text {
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+  }
+  .steps {
+    &__block {
+      &s {
+        margin-left: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        &:before {
+          left: 10px;
+          width: 2px;
+          height: 80%;
+        }
+      }
+      flex-direction: row;
+      align-items: flex-start;
+      max-width: 400px;
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+      &-number   {
+        margin-right: 35px;
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
+      &-text {
+        text-align: left;
+        font-size: 20px;
+      }
     }
   }
 }
@@ -153,6 +209,23 @@
       transform: translateX(-50%);
     }
   }
+  .reviews {
+    &__slide {
+      &-rating {
+        &-title {
+          font-size: 20px;
+        }
+      }
+      &-reviewer {
+        &-name {
+          font-size: 20px;
+        }
+        &-problem {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 576px) {
@@ -180,6 +253,45 @@
             'second third'
             'fourth fifth'
             'sixth seventh';
+        }
+      }
+    }
+    &__pricelist {
+      &-item {
+        &-name {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .reviews {
+    &__slide {
+      position: relative;
+      &-info {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      &-rating {
+        &-title {
+          display: none;
+        }
+        &-number {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+      &-reviewer {
+        flex-direction: row-reverse;
+        &-info {
+          margin-right: 0;
+        }
+        &-name {
+          text-align: left;
+        }
+        &-img {
+          margin-right: 15px;
         }
       }
     }
@@ -218,6 +330,20 @@
     &__input {
       margin-right: 0;
       margin-bottom: 15px;
+    }
+  }
+  .reviews {
+    &__slide {
+      &-text {
+        font-size: 14px;
+      }
+    }
+  }
+  .steps {
+    &__block {
+      &-text {
+        font-size: 18px;
+      }
     }
   }
 }
