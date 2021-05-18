@@ -1,7 +1,26 @@
 .header {
+  //top: 0;
+  //position: sticky;
+  position: fixed;
   top: 0;
-  position: sticky;
-  z-index: 1;
+  left: 50%;
+  z-index: 10000;
+  width: 100%;
+  transform: translateX(-50%);
+  &_scrolled {
+    @supports (backdrop-filter: blur(11px) brightness(0.6)) {
+      backdrop-filter: blur(11px) brightness(0.6);
+    }
+
+    @supports not (backdrop-filter: blur(11px) brightness(0.7)) {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .header {
+      &__wrap {
+        border-bottom: none;
+      }
+    }
+  }
   &__wrap {
     padding-top: 26px;
     padding-bottom: 26px;
