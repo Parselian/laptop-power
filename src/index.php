@@ -1,5 +1,5 @@
 <?php
-	require_once (__DIR__ . '/assets/configs/config.php');
+require_once(__DIR__ . '/assets/configs/config.php');
 ?>
 <!doctype html>
 <html lang="ru">
@@ -43,7 +43,7 @@
 </div>
 
 <section class="promo">
-	<header class="header">
+	<header class="header header_scrolled">
 		<div class="container header__wrap">
 			<svg class="header__col header__logo">
 				<use xlink:href="./assets/stack/sprite.svg#logo"></use>
@@ -56,7 +56,7 @@
 			</nav>
 			<div class="header__col">
 				<div class="header__contacts">
-					<a href="tel: <?= phone_link;?> " class="header__contacts-phone"><?= $phone_format?></a>
+					<a href="tel: <?= $phone_link; ?> " class="header__contacts-phone"><?= $phone_format ?></a>
 					<div class="header__contacts-worktime">8:00 — 23:00 без выходных</div>
 				</div>
 				<label for="check" class="burger-btn">
@@ -97,20 +97,20 @@
 			<svg class="features__feature-icon">
 				<use xlink:href="./assets/stack/sprite.svg#health-report"></use>
 			</svg>
-			<div class="features__feature-title">Бесплатная <span class="line-break">диагностика</span> </div>
+			<div class="features__feature-title">Бесплатная <span class="line-break">диагностика</span></div>
 		</div>
 		<div class="features__feature">
 			<svg class="features__feature-icon">
 				<use xlink:href="./assets/stack/sprite.svg#gear"></use>
 			</svg>
-			<div class="features__feature-title">Ремонт <span class="line-break">любой сложности</span> </div>
+			<div class="features__feature-title">Ремонт <span class="line-break">любой сложности</span></div>
 		</div>
 	</div>
 </section>
 
 <section class="prices">
 	<div class="container prices__wrap">
-		<h2 class="section__title section__title_alt prices__title">Услуги сервисного центра <?= $company_name?></h2>
+		<h2 class="section__title section__title_alt prices__title">Услуги сервисного центра <?= $company_name ?></h2>
 
 		<div class="prices__devices">
 			<button data-device="laptops" class="prices__devices-button">Ноутбуки</button>
@@ -248,7 +248,8 @@
 	<div class="container">
 		<div class="delivery-form">
 			<div class="delivery-form__title">Приедем к вам за 30 минут <span class="line-break">Бесплатно!</span></div>
-			<div class="delivery-form__subtitle">Оставьте свой номер телефона <span class="line-break">перезвоним через 2 минуты</span></div>
+			<div class="delivery-form__subtitle">Оставьте свой номер телефона <span class="line-break">перезвоним через 2 минуты</span>
+			</div>
 			<form action="./assets/configs/mail.php" method="POST">
 				<input type="text" class="delivery-form__input" placeholder="+7 (___) ___-__-__">
 				<button type="submit" class="button button_callback delivery-form__button">Перезвоните мне</button>
@@ -261,35 +262,118 @@
 	</div>
 </section>
 
-<section class="reviews">
-	<div class="container reviews__wrap">
-		<h2 class="section__title">Нас выбирают клиенты</h2>
-		<div class="section__subtitle">
-			Наши квалифицированные мастера дарят
-			<span class="line-break">Вашим устройствам вторую жизнь</span>
-		</div>
-		<div class="reviews__slider">
-			<div class="reviews__slide">
-				<p class="reviews__slide-text">
-					Обращался в эту мастерскую после того как уронил макбук, у которого разбился экран и погнулся корпус. Неисправность
-					устранили, для этого пришлось заменить экран и винчестер. После ремонта ноутбук работает без замечаний. Из неприятных
-					моментов только ситуация с неперезвоном- пообещали что мастер перезвонит через 5 минут, но так и не позвонил. Пришлось
-					звонить самому. В остальном все хорошо.
-				</p>
-				<div class="reviews__slide-info">
-					<div class="reviews__slide-rating">
-						<div class="reviews__slide-rating-title">Рейтинг:</div>
-						<div class="reviews__slide-rating-number">4.4</div>
+<section class="advantages">
+	<div class="container advantages__wrap">
+
+		<div class="advantages__col advantages__info">
+			<h3 class="advantages__title">Наши преимущества</h3>
+			<div class="advantages__slider">
+				<div class="advantages__slide">
+					<picture>
+						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
+						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
+					</picture>
+					<div class="advantages__slide-info">
+						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<p class="advantages__slide-text">
+							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
+							известен
+							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
+							выполнит
+							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
+							ремонт.
+						</p>
 					</div>
-					<div class="reviews__slide-reviewer">
-						<div class="reviews__slide-reviewer-info">
-							<div class="reviews__slide-reviewer-name">Валентин П.</div>
-							<div class="reviews__slide-reviewer-problem">Замена матрицы на ноутбуке</div>
-						</div>
-						<picture>
-							<source srcset="./assets/images/webp/reviewer_1.webp" type="image/webp">
-							<img src="./assets/images/reviewer_1.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
-						</picture>
+				</div>
+			</div>
+			<div class="advantages__static">
+				<div class="advantages__static-item">
+					<svg class="advantages__static-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#check"></use>
+					</svg>
+					<div class="advantages__static-item-text">Фиксированные цены</div>
+				</div>
+				<div class="advantages__static-item">
+					<svg class="advantages__static-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#check"></use>
+					</svg>
+					<div class="advantages__static-item-text">Бесплатный выезд</div>
+				</div>
+				<div class="advantages__static-item">
+					<svg class="advantages__static-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#check"></use>
+					</svg>
+					<div class="advantages__static-item-text">Пожизненная гарантия</div>
+				</div>
+				<div class="advantages__static-item">
+					<svg class="advantages__static-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#check"></use>
+					</svg>
+					<div class="advantages__static-item-text">Срочный ремонт</div>
+				</div>
+				<div class="advantages__static-item">
+					<svg class="advantages__static-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#check"></use>
+					</svg>
+					<div class="advantages__static-item-text">Оригинальные запчасти</div>
+				</div>
+				<div class="advantages__static-item">
+					<svg class="advantages__static-item-icon">
+						<use xlink:href="./assets/stack/sprite.svg#check"></use>
+					</svg>
+					<div class="advantages__static-item-text">Бесплатная диагностика</div>
+				</div>
+
+			</div>
+			<button class="button button_callback advantages__button">Вызвать мастера</button>
+		</div>
+
+		<div class="advantages__col advantages__controls">
+			<h3 class="advantages__controls-title">Преимущества</h3>
+			<div class="advantages__controls-buttons">
+				<div class="advantages__controls-button">
+					<svg class="advantages__controls-button-icon">
+						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+					</svg>
+					<div class="advantages__controls-button-info">
+						<h5 class="advantages__controls-button-title">Сроки</h5>
+						<div class="advantages__controls-button-text">Ремонт от 20 минут</div>
+					</div>
+				</div>
+				<div class="advantages__controls-button">
+					<svg class="advantages__controls-button-icon">
+						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+					</svg>
+					<div class="advantages__controls-button-info">
+						<h5 class="advantages__controls-button-title">Гарантия</h5>
+						<div class="advantages__controls-button-text">Пожизненная гарантия</div>
+					</div>
+				</div>
+				<div class="advantages__controls-button">
+					<svg class="advantages__controls-button-icon">
+						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+					</svg>
+					<div class="advantages__controls-button-info">
+						<h5 class="advantages__controls-button-title">Доставка</h5>
+						<div class="advantages__controls-button-text">Выезд и доставка</div>
+					</div>
+				</div>
+				<div class="advantages__controls-button">
+					<svg class="advantages__controls-button-icon">
+						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+					</svg>
+					<div class="advantages__controls-button-info">
+						<h5 class="advantages__controls-button-title">Диагностика</h5>
+						<div class="advantages__controls-button-text">Бесплатная диагностика</div>
+					</div>
+				</div>
+				<div class="advantages__controls-button">
+					<svg class="advantages__controls-button-icon">
+						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+					</svg>
+					<div class="advantages__controls-button-info">
+						<h5 class="advantages__controls-button-title">Запчасти</h5>
+						<div class="advantages__controls-button-text">Оригинальные запчасти</div>
 					</div>
 				</div>
 			</div>
@@ -383,6 +467,42 @@
 			</div>
 		</div>
 		<button class="button button_callback team__button">Вызвать мастера</button>
+	</div>
+</section>
+
+<section class="reviews">
+	<div class="container reviews__wrap">
+		<h2 class="section__title">Нас выбирают клиенты</h2>
+		<div class="section__subtitle">
+			Наши квалифицированные мастера дарят
+			<span class="line-break">Вашим устройствам вторую жизнь</span>
+		</div>
+		<div class="reviews__slider">
+			<div class="reviews__slide">
+				<p class="reviews__slide-text">
+					Обращался в эту мастерскую после того как уронил макбук, у которого разбился экран и погнулся корпус. Неисправность
+					устранили, для этого пришлось заменить экран и винчестер. После ремонта ноутбук работает без замечаний. Из неприятных
+					моментов только ситуация с неперезвоном- пообещали что мастер перезвонит через 5 минут, но так и не позвонил. Пришлось
+					звонить самому. В остальном все хорошо.
+				</p>
+				<div class="reviews__slide-info">
+					<div class="reviews__slide-rating">
+						<div class="reviews__slide-rating-title">Рейтинг:</div>
+						<div class="reviews__slide-rating-number">4.4</div>
+					</div>
+					<div class="reviews__slide-reviewer">
+						<div class="reviews__slide-reviewer-info">
+							<div class="reviews__slide-reviewer-name">Валентин П.</div>
+							<div class="reviews__slide-reviewer-problem">Замена матрицы на ноутбуке</div>
+						</div>
+						<picture>
+							<source srcset="./assets/images/webp/reviewer_1.webp" type="image/webp">
+							<img src="./assets/images/reviewer_1.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
+						</picture>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -508,7 +628,7 @@
 					<svg class="contacts__block-item-icon">
 						<use xlink:href="./assets/stack/sprite.svg#phone-call"></use>
 					</svg>
-					<a href="tel:<?=$phone_link?>" class="contacts__block-item-link"><?=$phone_format?></a>
+					<a href="tel:<?= $phone_link ?>" class="contacts__block-item-link"><?= $phone_format ?></a>
 				</div>
 			</div>
 
@@ -531,30 +651,32 @@
 </section>
 
 <footer class="footer">
-<div class="container footer__wrap">
-  <div class="footer__col">
-	<img src="./assets/images/svg/logo.svg" alt="logo" class="footer__logo">
-	<div class="footer__billings">
-	  <img src="./assets/images/svg/visa.svg" alt="visa" class="footer__billing">
-	  <img src="./assets/images/svg/mastercard.svg" alt="mastercard" class="footer__billing">
-	  <img src="./assets/images/sber.png" alt="sber" class="footer__billing">
-	  <img src="./assets/images/rub.png" alt="cash" class="footer__billing">
+	<div class="container footer__wrap">
+		<div class="footer__col">
+			<img src="./assets/images/svg/logo.svg" alt="logo" class="footer__logo">
+			<div class="footer__billings">
+				<img src="./assets/images/svg/visa.svg" alt="visa" class="footer__billing">
+				<img src="./assets/images/svg/mastercard.svg" alt="mastercard" class="footer__billing">
+				<img src="./assets/images/sber.png" alt="sber" class="footer__billing">
+				<img src="./assets/images/rub.png" alt="cash" class="footer__billing">
+			</div>
+		</div>
+		<nav class="footer__col footer__nav">
+			<a href="#prices" class="footer__nav-link">Цены</a>
+			<a href="#about" class="footer__nav-link">О нас</a>
+			<a href="#faq" class="footer__nav-link">Отзывы</a>
+			<a href="#contacts" class="footer__nav-link">Контакты</a>
+		</nav>
+		<div class="footer__col footer__contacts">
+			<a href="tel:<?= $phone_link ?>" class="footer__phone"><?= $phone_format ?></a>
+			<div class="footer__worktime">C 8:00 до 23:00 без выходных</div>
+		</div>
 	</div>
-  </div>
-  <nav class="footer__col footer__nav">
-	<a href="#prices" class="footer__nav-link">Цены</a>
-	<a href="#about" class="footer__nav-link">О нас</a>
-	<a href="#faq" class="footer__nav-link">Отзывы</a>
-	<a href="#contacts" class="footer__nav-link">Контакты</a>
-  </nav>
-  <div class="footer__col footer__contacts">
-	<a href="tel:<?= $phone_link?>" class="footer__phone"><?= $phone_format?></a>
-	<div class="footer__worktime">C 8:00 до 23:00 без выходных</div>
-  </div>
-</div>
-<div class="container footer__footnote">
-  Сервисный центр <?= $company_name?>. Acer, Asus, HP, Apple, Lenovo, MSI, Dell, Xiaomi, Sony, Samsung, LG, Honor, Huawei, Prettec, Irbis и их логотипы являются зарегистрированными товарными знаками в США и других странах. Информация опубликованная на сайте не является публичной офертой, определяемой положениями Статьи 437 ГК РФ. Цены указаны за услугу, запчасти в эту стоимость не входят.
-</div>
+	<div class="container footer__footnote">
+		Сервисный центр <?= $company_name ?>. Acer, Asus, HP, Apple, Lenovo, MSI, Dell, Xiaomi, Sony, Samsung, LG, Honor, Huawei, Prettec,
+		Irbis и их логотипы являются зарегистрированными товарными знаками в США и других странах. Информация опубликованная на сайте не
+		является публичной офертой, определяемой положениями Статьи 437 ГК РФ. Цены указаны за услугу, запчасти в эту стоимость не входят.
+	</div>
 </footer>
 </body>
 </html>
