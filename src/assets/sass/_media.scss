@@ -174,6 +174,32 @@
       }
     }
   }
+  .misc {
+    &__wrap {
+      flex-direction: column;
+    }
+  }
+  .faq {
+    margin-bottom: 40px;
+    width: 100%;
+    &__title {
+      text-align: center;
+      &:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  .gallery {
+    width: 100%;
+    &__title {
+      text-align: center;
+      &:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -322,6 +348,18 @@
       }
     }
   }
+  .gallery {
+    &__image {
+      &s {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas:
+        'firs second'
+        'third fourth'
+        'fifth sixth';
+      }
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -390,6 +428,18 @@
       }
       &-img {
         height: 250px;
+      }
+    }
+  }
+  .faq {
+    &__list {
+      &-item {
+        &-title {
+          font-size: 18px;
+        }
+        &-text {
+          font-size: 14px;
+        }
       }
     }
   }

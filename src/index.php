@@ -385,5 +385,97 @@
 		<button class="button button_callback team__button">Вызвать мастера</button>
 	</div>
 </section>
+
+<section class="misc">
+	<div class="container misc__wrap">
+		<div class="faq">
+			<h2 class="section__title faq__title">Ответы на частые вопросы</h2>
+			<ul class="faq__list">
+				<li class="faq__list-item">
+					<div class="faq__list-item-title">
+						Сколько длится ремонт?
+						<svg class="faq__list-item-title-icon faq__list-item-title-icon_active">
+							<use xlink:href="./assets/stack/sprite.svg#faq-arrow"></use>
+						</svg>
+					</div>
+					<p class="faq__list-item-text">
+						Допустим ноутбук перегревался и мы заменили кулер. Проверка показала, что перегрев снизился, но не исчез.
+						Это значит, что не справляются 4 возможные детали: кулер, процессор, видеочип, ОЗУ.
+						Мастер разобрал ноутбук еще раз и выяснил, что на видеочипе высохла термопаста. После замены термопасты ноутбук
+						окончательно перестал перегреваться. Отдел контроля качества справился с задачей.
+					</p>
+				</li>
+				<li class="faq__list-item">
+					<div class="faq__list-item-title">
+						Как проверяете качество ремонта?
+						<svg class="faq__list-item-title-icon">
+							<use xlink:href="./assets/stack/sprite.svg#faq-arrow"></use>
+						</svg>
+					</div>
+					<p class="faq__list-item-text">
+						Допустим ноутбук перегревался и мы заменили кулер. Проверка показала, что перегрев снизился, но не исчез.
+						Это значит, что не справляются 4 возможные детали: кулер, процессор, видеочип, ОЗУ.
+						Мастер разобрал ноутбук еще раз и выяснил, что на видеочипе высохла термопаста. После замены термопасты ноутбук
+						окончательно перестал перегреваться. Отдел контроля качества справился с задачей.
+					</p>
+				</li>
+				<li class="faq__list-item">
+					<div class="faq__list-item-title">
+						Как проходит ремонт устройства в СЦ?
+						<svg class="faq__list-item-title-icon">
+							<use xlink:href="./assets/stack/sprite.svg#faq-arrow"></use>
+						</svg>
+					</div>
+					<p class="faq__list-item-text">
+						Допустим ноутбук перегревался и мы заменили кулер. Проверка показала, что перегрев снизился, но не исчез.
+						Это значит, что не справляются 4 возможные детали: кулер, процессор, видеочип, ОЗУ.
+						Мастер разобрал ноутбук еще раз и выяснил, что на видеочипе высохла термопаста. После замены термопасты ноутбук
+						окончательно перестал перегреваться. Отдел контроля качества справился с задачей.
+					</p>
+				</li>
+				<li class="faq__list-item">
+					<div class="faq__list-item-title">
+						Какие бренды ноутбуков вы ремонтируете?
+						<svg class="faq__list-item-title-icon">
+							<use xlink:href="./assets/stack/sprite.svg#faq-arrow"></use>
+						</svg>
+					</div>
+					<p class="faq__list-item-text">
+						Допустим ноутбук перегревался и мы заменили кулер. Проверка показала, что перегрев снизился, но не исчез.
+						Это значит, что не справляются 4 возможные детали: кулер, процессор, видеочип, ОЗУ.
+						Мастер разобрал ноутбук еще раз и выяснил, что на видеочипе высохла термопаста. После замены термопасты ноутбук
+						окончательно перестал перегреваться. Отдел контроля качества справился с задачей.
+					</p>
+				</li>
+			</ul>
+		</div>
+
+		<div class="gallery">
+			<h2 class="section__title gallery__title">
+				Галерея
+			</h2>
+			<div class="gallery__images">
+				<picture>
+					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
+					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+				<picture>
+					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
+					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+				<picture>
+					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
+					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+				<picture>
+					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
+					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+				<picture>
+					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
+					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+				<picture>
+					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
+					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+			</div>
+		</div>
+	</div>
+</section>
 </body>
 </html>

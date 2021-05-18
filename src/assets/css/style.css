@@ -185,6 +185,7 @@ button {
       margin-right: 40px; }
 
 .features {
+  padding-bottom: 0;
   color: #FFF;
   background-color: #2F2F2F; }
   .features__wrap {
@@ -541,6 +542,10 @@ button {
       font-size: 20px;
       text-align: center; }
 
+.team__wrap {
+  padding-bottom: 90px;
+  border-bottom: 1px solid #ebebeb; }
+
 .team__card {
   width: 100%;
   max-width: 270px; }
@@ -593,6 +598,90 @@ button {
   -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1); }
+
+.misc {
+  padding-top: 0; }
+  .misc__wrap {
+    display: flex;
+    justify-content: space-between; }
+
+.faq {
+  width: 49%; }
+  .faq__title {
+    font-size: 28px;
+    text-align: left; }
+    .faq__title:after {
+      left: 0;
+      transform: unset; }
+  .faq__list {
+    padding-left: 0;
+    border: 1px solid #ebebeb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; }
+    .faq__list-item {
+      padding: 15px 20px;
+      border-bottom: 1px solid #ebebeb;
+      overflow: hidden;
+      cursor: pointer; }
+      .faq__list-item-title {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px; }
+        .faq__list-item-title-icon {
+          min-width: 25px;
+          max-width: 25px;
+          min-height: 25px;
+          max-height: 25px;
+          fill: #d1d1d1; }
+          .faq__list-item-title-icon_active {
+            fill: #FF9900; }
+      .faq__list-item-text {
+        margin-top: 15px;
+        font-size: 14px;
+        overflow: hidden; }
+
+.gallery {
+  width: 49%; }
+  .gallery__title {
+    font-size: 28px;
+    text-align: left; }
+    .gallery__title:after {
+      left: 0;
+      transform: unset; }
+  .gallery__image {
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: .2s;
+    cursor: pointer; }
+    .gallery__images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-gap: 15px;
+      grid-template-areas: 'firs second third' 'fourth fifth sixth'; }
+      .gallery__images picture:first-child {
+        grid-area: firs; }
+      .gallery__images picture:nth-child(2) {
+        grid-area: second; }
+      .gallery__images picture:nth-child(3) {
+        grid-area: third; }
+      .gallery__images picture:nth-child(4) {
+        grid-area: fourth; }
+      .gallery__images picture:nth-child(5) {
+        grid-area: fifth; }
+      .gallery__images picture:nth-child(6) {
+        grid-area: sixth; }
+    .gallery__image:hover {
+      transform: scale(1.02); }
 
 @media (max-width: 1200px) {
   .steps__block {
@@ -698,7 +787,24 @@ button {
     .team__card:nth-child(-n+2) {
       margin-bottom: 40px; }
     .team__card-img {
-      height: 300px; } }
+      height: 300px; }
+  .misc__wrap {
+    flex-direction: column; }
+  .faq {
+    margin-bottom: 40px;
+    width: 100%; }
+    .faq__title {
+      text-align: center; }
+      .faq__title:after {
+        left: 50%;
+        transform: translateX(-50%); }
+  .gallery {
+    width: 100%; }
+    .gallery__title {
+      text-align: center; }
+      .gallery__title:after {
+        left: 50%;
+        transform: translateX(-50%); } }
 
 @media (max-width: 768px) {
   .promo {
@@ -777,7 +883,11 @@ button {
       .reviews__slide-reviewer-name {
         text-align: left; }
       .reviews__slide-reviewer-img {
-        margin-right: 15px; } }
+        margin-right: 15px; }
+  .gallery__images {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 'firs second' 'third fourth' 'fifth sixth'; } }
 
 @media (max-width: 480px) {
   .header__contacts {
@@ -817,7 +927,11 @@ button {
     .team__card:not(:last-child) {
       margin-bottom: 40px; }
     .team__card-img {
-      height: 250px; } }
+      height: 250px; }
+  .faq__list-item-title {
+    font-size: 18px; }
+  .faq__list-item-text {
+    font-size: 14px; } }
 
 @media (max-width: 420px) {
   .features {
