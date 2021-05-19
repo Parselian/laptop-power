@@ -2,7 +2,7 @@
 
 body {
   color: $main-text-color;
-  font-family: 'Roboto', sans-serif, -apple-system;
+  font-family: 'SF UI Display', sans-serif, -apple-system;
 }
 
 section {
@@ -96,4 +96,5 @@ button {
 @import "questions";
 @import "contacts";
 @import "footer";
+@import "popups";
 @import "media";

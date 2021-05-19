@@ -9,6 +9,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="./assets/css/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="./assets/css/reset.css">
+	<link rel="stylesheet" href="./assets/css/fonts.css">
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<title>Laptop Power</title>
 </head>
@@ -110,7 +111,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 
 <section class="prices">
 	<div class="container prices__wrap">
-		<h2 class="section__title section__title_alt prices__title">Услуги сервисного центра <?= $company_name ?></h2>
+		<h2 class="section__title section__title_alt prices__title">Услуги сервисного центра <?= $company_name;?></h2>
 
 		<div class="prices__devices">
 			<button data-device="laptops" class="prices__devices-button">Ноутбуки</button>
@@ -682,5 +683,53 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		является публичной офертой, определяемой положениями Статьи 437 ГК РФ. Цены указаны за услугу, запчасти в эту стоимость не входят.
 	</div>
 </footer>
+
+<div class="popup popup-order">
+	<form action="" method="POST" class="popup-form popup-form_order">
+		<h2 class="popup-form__title">Заказать ремонт матрицы ноутбука со <span class="text_accent">cкидкой 20%</span></h2>
+		<div class="popup-form__subtitle">Мы свяжемся с вами через 2 минуты</div>
+		<svg class="popup-form__close">
+			<use xlink:href="./assets/stack/sprite.svg#close"></use>
+		</svg>
+		<div class="popup-form__row">
+			<div class="popup-form__col">
+				<div class="popup-form__input-wrap">
+					<label for="" class="popup-form__input-label">Ваше имя:</label>
+					<input type="text" class="popup-form__input" placeholder="Ваше имя">
+				</div>
+				<div class="popup-form__input-wrap">
+					<label for="" class="popup-form__input-label">Ваш телефон</label>
+					<input type="text" class="popup-form__input" placeholder="+7 (___) ___-__-__">
+				</div>
+				<button type="submit" class="button button_callback popup-form__button">Оставить заявку</button>
+				<div class="popup-form__footnote">
+					Нажимая на кнопку "Оставить заявку" я даю согласие на
+					<a href="#" class="popup-form__footnote-link">обработку персональных данных</a>
+				</div>
+			</div>
+			<div class="popup-form__col">
+				<div class="popup-form__phone-wrap">
+					<div class="popup-form__phone-label">Или позвоните нам:</div>
+					<a href="tel: <?=$phone_link?>" class="popup-form__phone"><?= $phone_format?></a>
+				</div>
+				<picture>
+					<source srcset="./assets/images/webp/asus-laptop.webp" type="image/webp">
+					<img src="./assets/images/asus-laptop.jpg" alt="Заказать ремонт" class="popup-form__img">
+				</picture>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="popup popup-thanks">
+	<div class="popup-form popup-form_thanks">
+		<svg class="popup-form__close">
+			<use xlink:href="./assets/stack/sprite.svg#close"></use>
+		</svg>
+		<h2 class="popup-form__title popup-form__title_thanks">Спасибо!</h2>
+		<div class="popup-form__subtitle">Мы свяжемся с вами через 2 минуты</div>
+		<button class="button button_callback popup-form__button popup-form__button_thanks">Закрыть</button>
+	</div>
+</div>
 </body>
 </html>
