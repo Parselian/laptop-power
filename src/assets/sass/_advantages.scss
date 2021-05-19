@@ -1,0 +1,131 @@
+.advantages {
+  padding: 0;
+  background-color: $accent-bg-color;
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__info {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    width: 65%;
+  }
+  &__title {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+  &__slide {
+    &r {
+      margin-bottom: 30px;
+    }
+    display: flex;
+    &-img {
+      margin-right: 15px;
+      max-width: 350px;
+      min-width: 350px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.15);
+      -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.15);
+      box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.15);
+    }
+    &-info {
+      padding-top: 5px;
+    }
+    &-title {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    &-text {
+      font-size: 16px;
+    }
+  }
+  &__static {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &-item {
+      margin-right: 1%;
+      width: 32%;
+      display: flex;
+      align-items: center;
+      &:nth-child(-n+3) {
+        margin-bottom: 20px;
+      }
+      &-icon {
+        margin-right: 15px;
+        width: 20px;
+        height: 20px;
+        fill: $accent-color;
+      }
+    }
+  }
+  &__controls {
+    padding: 50px 0px;
+    width: 39%;
+    max-width: 360px;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.15);
+    &-title {
+      margin-bottom: 40px;
+      font-size: 28px;
+      padding: 15px 20px;
+      color: $alt-text-color;
+      background-color: $main-text-color;
+    }
+    &-button {
+      &s {
+        padding: 0 10px;
+      }
+
+      position: relative;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color .2s;
+      &_active, &:hover {
+        background-color: $delivery-feature-bg-color;
+      }
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: -14px;
+        left: 50%;
+        width: 90%;
+        height: 1px;
+        background-color: lighten($border-color, 30%);
+        transform: translateX(-50%);
+      }
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+      &-icon {
+        margin-right: 20px;
+        width: 45px;
+        height: 45px;
+      }
+      &-title {
+        margin: 0;
+        font-size: 18px;
+      }
+    }
+    &-more {
+      display: none;
+      width: 35px;
+      height: 35px;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+      fill: $border-color;
+      transition: .2s;
+      &:hover {
+        fill: $interaction-color;
+      }
+    }
+  }
+}
