@@ -16,9 +16,16 @@
   }
   &__slide {
     &r {
+      position: relative;
       margin-bottom: 30px;
     }
-    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    &_active {
+      display: flex;
+    }
     &-img {
       margin-right: 15px;
       max-width: 350px;
@@ -83,8 +90,11 @@
       }
 
       position: relative;
+      z-index: 10;
       padding: 15px 30px;
       display: flex;
+      width: 100%;
+      text-align: left;
       align-items: center;
       cursor: pointer;
       transition: background-color .2s;
@@ -104,7 +114,13 @@
       &:not(:last-child) {
         margin-bottom: 24px;
       }
+      &-info {
+        position: relative;
+        z-index: -1;
+      }
       &-icon {
+        position: relative;
+        z-index: -1;
         margin-right: 20px;
         width: 45px;
         height: 45px;

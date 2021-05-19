@@ -10,7 +10,13 @@ require_once(__DIR__ . '/assets/configs/config.php');
 	<link rel="stylesheet" href="./assets/css/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="./assets/css/reset.css">
 	<link rel="stylesheet" href="./assets/css/fonts.css">
-	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+		  integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+		  integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link rel="stylesheet" href="./assets/css/style.css?<?= time(); ?>">
 	<title>Laptop Power</title>
 </head>
 <body>
@@ -80,7 +86,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			<li class="promo__list-item">— Бесплатный выезд и диагностика</li>
 		</ul>
 		<div class="promo__buttons">
-			<button class="button button_callback promo__button">Срочный ремонт</button>
+			<button class="button button_callback promo__button open-order-form">Срочный ремонт</button>
 			<button class="button button_accent-transparent promo__button">Получить скидку</button>
 		</div>
 	</div>
@@ -111,7 +117,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 
 <section class="prices">
 	<div class="container prices__wrap">
-		<h2 class="section__title section__title_alt prices__title">Услуги сервисного центра <?= $company_name;?></h2>
+		<h2 class="section__title section__title_alt prices__title">Услуги сервисного центра <?= $company_name; ?></h2>
 
 		<div class="prices__devices">
 			<button data-device="laptops" class="prices__devices-button">Ноутбуки</button>
@@ -213,7 +219,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				<span class="prices__pricelist-item-name">Ремонт материнской платы ноутбука</span>
 				<div class="prices__pricelist-item-wrap">
 					<div class="prices__pricelist-item-label">+ скидка 20%</div>
-					<button class="prices__pricelist-item-button">Вызвать мастера</button>
+					<button class="prices__pricelist-item-button open-order-form">Вызвать мастера</button>
 					<div class="prices__pricelist-item-price">1 990 ₽</div>
 				</div>
 			</li>
@@ -221,7 +227,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				<span class="prices__pricelist-item-name">Ремонт материнской платы ноутбука</span>
 				<div class="prices__pricelist-item-wrap">
 					<div class="prices__pricelist-item-label">+ скидка 20%</div>
-					<button class="prices__pricelist-item-button">Вызвать мастера</button>
+					<button class="prices__pricelist-item-button open-order-form">Вызвать мастера</button>
 					<div class="prices__pricelist-item-price">1 990 ₽</div>
 				</div>
 			</li>
@@ -229,15 +235,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				<span class="prices__pricelist-item-name">Ремонт материнской платы ноутбука</span>
 				<div class="prices__pricelist-item-wrap">
 					<div class="prices__pricelist-item-label">+ скидка 20%</div>
-					<button class="prices__pricelist-item-button">Вызвать мастера</button>
-					<div class="prices__pricelist-item-price">1 990 ₽</div>
-				</div>
-			</li>
-			<li class="prices__pricelist-item">
-				<span class="prices__pricelist-item-name">Ремонт материнской платы ноутбука</span>
-				<div class="prices__pricelist-item-wrap">
-					<div class="prices__pricelist-item-label">+ скидка 20%</div>
-					<button class="prices__pricelist-item-button">Вызвать мастера</button>
+					<button class="prices__pricelist-item-button open-order-form">Вызвать мастера</button>
 					<div class="prices__pricelist-item-price">1 990 ₽</div>
 				</div>
 			</li>
@@ -252,7 +250,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			<div class="delivery-form__subtitle">Оставьте свой номер телефона <span class="line-break">перезвоним через 2 минуты</span>
 			</div>
 			<form action="./assets/configs/mail.php" method="POST">
-				<input type="text" class="delivery-form__input" placeholder="+7 (___) ___-__-__">
+				<input type="text" name="user_phone" class="delivery-form__input" placeholder="+7 (___) ___-__-__">
 				<button type="submit" class="button button_callback delivery-form__button">Перезвоните мне</button>
 			</form>
 			<picture>
@@ -269,7 +267,75 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		<div class="advantages__col advantages__info">
 			<h3 class="advantages__title">Наши преимущества</h3>
 			<div class="advantages__slider">
-				<div class="advantages__slide">
+				<div class="advantages__slide advantages__slide_active" data-slide="diagnostics">
+					<picture>
+						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
+						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
+					</picture>
+					<div class="advantages__slide-info">
+						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<p class="advantages__slide-text">
+							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
+							известен
+							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
+							выполнит
+							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
+							ремонт.
+						</p>
+					</div>
+				</div>
+				<div class="advantages__slide" data-slide="deadlines">
+					<picture>
+						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
+						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
+					</picture>
+					<div class="advantages__slide-info">
+						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<p class="advantages__slide-text">
+							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
+							известен
+							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
+							выполнит
+							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
+							ремонт.
+						</p>
+					</div>
+				</div>
+				<div class="advantages__slide" data-slide="delivery">
+					<picture>
+						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
+						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
+					</picture>
+					<div class="advantages__slide-info">
+						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<p class="advantages__slide-text">
+							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
+							известен
+							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
+							выполнит
+							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
+							ремонт.
+						</p>
+					</div>
+				</div>
+				<div class="advantages__slide" data-slide="parts">
+					<picture>
+						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
+						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
+					</picture>
+					<div class="advantages__slide-info">
+						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<p class="advantages__slide-text">
+							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
+							известен
+							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
+							выполнит
+							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
+							ремонт.
+						</p>
+					</div>
+				</div>
+				<div class="advantages__slide" data-slide="warranty">
 					<picture>
 						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
 						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
@@ -326,13 +392,13 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				</div>
 
 			</div>
-			<button class="button button_callback advantages__button">Вызвать мастера</button>
+			<button class="button button_callback advantages__button open-order-form">Вызвать мастера</button>
 		</div>
 
 		<div class="advantages__col advantages__controls">
 			<h3 class="advantages__controls-title">Преимущества</h3>
 			<div class="advantages__controls-buttons">
-				<div class="advantages__controls-button">
+				<div class="advantages__controls-button" data-btn-slide="deadlines">
 					<svg class="advantages__controls-button-icon">
 						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
 					</svg>
@@ -341,7 +407,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<div class="advantages__controls-button-text">Ремонт от 20 минут</div>
 					</div>
 				</div>
-				<div class="advantages__controls-button advantages__controls-button_active">
+				<div class="advantages__controls-button advantages__controls-button_active" data-btn-slide="warranty">
 					<svg class="advantages__controls-button-icon">
 						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
 					</svg>
@@ -350,7 +416,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<div class="advantages__controls-button-text">Пожизненная гарантия</div>
 					</div>
 				</div>
-				<div class="advantages__controls-button">
+				<div class="advantages__controls-button" data-btn-slide="delivery">
 					<svg class="advantages__controls-button-icon">
 						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
 					</svg>
@@ -359,7 +425,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<div class="advantages__controls-button-text">Выезд и доставка</div>
 					</div>
 				</div>
-				<div class="advantages__controls-button">
+				<div class="advantages__controls-button" data-btn-slide="diagnostics">
 					<svg class="advantages__controls-button-icon">
 						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
 					</svg>
@@ -368,7 +434,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<div class="advantages__controls-button-text">Бесплатная диагностика</div>
 					</div>
 				</div>
-				<div class="advantages__controls-button">
+				<div class="advantages__controls-button" data-btn-slide="parts">
 					<svg class="advantages__controls-button-icon">
 						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
 					</svg>
@@ -471,7 +537,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				<a href="#" class="team__card-link">Посмотреть сертификат</a>
 			</div>
 		</div>
-		<button class="button button_callback team__button">Вызвать мастера</button>
+		<button class="button button_callback team__button open-order-form">Вызвать мастера</button>
 	</div>
 </section>
 
@@ -519,7 +585,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				<li class="faq__list-item">
 					<div class="faq__list-item-title">
 						Сколько длится ремонт?
-						<svg class="faq__list-item-title-icon faq__list-item-title-icon_active">
+						<svg class="faq__list-item-title-icon">
 							<use xlink:href="./assets/stack/sprite.svg#faq-arrow"></use>
 						</svg>
 					</div>
@@ -608,7 +674,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		<h2 class="section__title questions__title">Остались вопросы?</h2>
 		<div class="section__subtitle questions__subtitle">Оставьте свой номер телефона, мы свяжемся с вами через 2 минуты</div>
 		<form action="" class="questions__form">
-			<input type="text" class="questions__form-input" placeholder="+7 (___) ___-__-__">
+			<input type="text" name="user_phone" class="questions__form-input" placeholder="+7 (___) ___-__-__">
 			<button type="submit" class="button questions__form-button">Перезвоните мне</button>
 		</form>
 		<div class="questions__form-footnote">Нажимая на кнопку "Перезвоните мне" вы соглашаетесь с политикой обработки
@@ -686,8 +752,8 @@ require_once(__DIR__ . '/assets/configs/config.php');
 
 <div class="popup popup-order">
 	<form action="" method="POST" class="popup-form popup-form_order">
-		<h2 class="popup-form__title">Заказать ремонт матрицы ноутбука со <span class="text_accent">cкидкой 20%</span></h2>
-		<div class="popup-form__subtitle">Мы свяжемся с вами через 2 минуты</div>
+		<h2 class="popup-form__title">Заказать ремонт ноутбука со <span class="text_accent">cкидкой 20%</span></h2>
+		<div class="popup-form__subtitle">Оставьте свой номер телефона <span class="line-break">Мы свяжемся с вами через 2 минуты</span></div>
 		<svg class="popup-form__close">
 			<use xlink:href="./assets/stack/sprite.svg#close"></use>
 		</svg>
@@ -695,11 +761,11 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			<div class="popup-form__col">
 				<div class="popup-form__input-wrap">
 					<label for="" class="popup-form__input-label">Ваше имя:</label>
-					<input type="text" class="popup-form__input" placeholder="Ваше имя">
+					<input type="text" name="user_name" class="popup-form__input" placeholder="Ваше имя">
 				</div>
 				<div class="popup-form__input-wrap">
 					<label for="" class="popup-form__input-label">Ваш телефон</label>
-					<input type="text" class="popup-form__input" placeholder="+7 (___) ___-__-__">
+					<input type="text" name="user_phone" class="popup-form__input" placeholder="+7 (___) ___-__-__">
 				</div>
 				<button type="submit" class="button button_callback popup-form__button">Оставить заявку</button>
 				<div class="popup-form__footnote">
@@ -710,7 +776,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			<div class="popup-form__col">
 				<div class="popup-form__phone-wrap">
 					<div class="popup-form__phone-label">Или позвоните нам:</div>
-					<a href="tel: <?=$phone_link?>" class="popup-form__phone"><?= $phone_format?></a>
+					<a href="tel: <?= $phone_link ?>" class="popup-form__phone"><?= $phone_format ?></a>
 				</div>
 				<picture>
 					<source srcset="./assets/images/webp/asus-laptop.webp" type="image/webp">
@@ -719,6 +785,45 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			</div>
 		</div>
 	</form>
+	<div class="popup__bg"></div>
+</div>
+
+<div class="popup popup-discount">
+	<form action="" method="POST" class="popup-form popup-form_order">
+		<h2 class="popup-form__title">Получить <span class="text_accent">cкидку 20%</span> на первый ремонт</h2>
+		<div class="popup-form__subtitle">Оставьте свой номер телефона <span class="line-break">Мы свяжемся с вами через 2 минуты</span></div>
+		<svg class="popup-form__close">
+			<use xlink:href="./assets/stack/sprite.svg#close"></use>
+		</svg>
+		<div class="popup-form__row">
+			<div class="popup-form__col">
+				<div class="popup-form__input-wrap">
+					<label for="" class="popup-form__input-label">Ваше имя:</label>
+					<input type="text" name="user_name" class="popup-form__input" placeholder="Ваше имя">
+				</div>
+				<div class="popup-form__input-wrap">
+					<label for="" class="popup-form__input-label">Ваш телефон</label>
+					<input type="text" name="user_phone" class="popup-form__input" placeholder="+7 (___) ___-__-__">
+				</div>
+				<button type="submit" class="button button_callback popup-form__button">Оставить заявку</button>
+				<div class="popup-form__footnote">
+					Нажимая на кнопку "Оставить заявку" я даю согласие на
+					<a href="#" class="popup-form__footnote-link">обработку персональных данных</a>
+				</div>
+			</div>
+			<div class="popup-form__col">
+				<div class="popup-form__phone-wrap">
+					<div class="popup-form__phone-label">Или позвоните нам:</div>
+					<a href="tel: <?= $phone_link ?>" class="popup-form__phone"><?= $phone_format ?></a>
+				</div>
+				<picture>
+					<source srcset="./assets/images/webp/asus-laptop.webp" type="image/webp">
+					<img src="./assets/images/asus-laptop.jpg" alt="Заказать ремонт" class="popup-form__img">
+				</picture>
+			</div>
+		</div>
+	</form>
+	<div class="popup__bg"></div>
 </div>
 
 <div class="popup popup-thanks">
@@ -730,6 +835,19 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		<div class="popup-form__subtitle">Мы свяжемся с вами через 2 минуты</div>
 		<button class="button button_callback popup-form__button popup-form__button_thanks">Закрыть</button>
 	</div>
+	<div class="popup__bg"></div>
 </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"
+		integrity="sha512-d4KkQohk+HswGs6A1d6Gak6Bb9rMWtxjOa0IiY49Q3TeFd5xAzjWXDCBW9RS7m86FQ4RzM2BdHmdJnnKRYknxw==" crossorigin="anonymous"
+		referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+		integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"
+		referrerpolicy="no-referrer"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>

@@ -422,9 +422,15 @@ button {
     margin-bottom: 20px;
     font-size: 32px; }
   .advantages__slide {
-    display: flex; }
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none; }
     .advantages__slider {
+      position: relative;
       margin-bottom: 30px; }
+    .advantages__slide_active {
+      display: flex; }
     .advantages__slide-img {
       margin-right: 15px;
       max-width: 350px;
@@ -475,8 +481,11 @@ button {
       background-color: #000; }
     .advantages__controls-button {
       position: relative;
+      z-index: 10;
       padding: 15px 30px;
       display: flex;
+      width: 100%;
+      text-align: left;
       align-items: center;
       cursor: pointer;
       transition: background-color .2s; }
@@ -495,7 +504,12 @@ button {
         transform: translateX(-50%); }
       .advantages__controls-button:not(:last-child) {
         margin-bottom: 24px; }
+      .advantages__controls-button-info {
+        position: relative;
+        z-index: -1; }
       .advantages__controls-button-icon {
+        position: relative;
+        z-index: -1;
         margin-right: 20px;
         width: 45px;
         height: 45px; }
@@ -732,11 +746,15 @@ button {
     -moz-border-radius: 5px;
     border-radius: 5px; }
     .faq__list-item {
-      padding: 15px 20px;
+      padding: 0 20px;
       border-bottom: 1px solid #ebebeb;
       overflow: hidden;
       cursor: pointer; }
+      .faq__list-item-title, .faq__list-item-text {
+        position: relative;
+        z-index: -1; }
       .faq__list-item-title {
+        padding: 15px 0;
         position: relative;
         display: flex;
         justify-content: space-between;
@@ -747,13 +765,17 @@ button {
           max-width: 25px;
           min-height: 25px;
           max-height: 25px;
-          fill: #d1d1d1; }
+          transform: rotate(0);
+          fill: #d1d1d1;
+          transition: .4s; }
           .faq__list-item-title-icon_active {
+            transform: rotate(180deg);
             fill: #FF9900; }
       .faq__list-item-text {
-        margin-top: 15px;
+        padding: 0 0 20px 0;
         font-size: 14px;
-        overflow: hidden; }
+        overflow: hidden;
+        display: none; }
 
 .gallery {
   width: 49%; }
@@ -948,20 +970,15 @@ button {
   align-items: center; }
   .popup_active {
     display: flex; }
-  .popup:before {
+  .popup__bg {
     position: fixed;
     content: '';
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1; }
-    @supports (backdrop-filter: blur(11px) brightness(0.6)) {
-      .popup:before {
-        backdrop-filter: blur(11px) brightness(0.6); } }
-    @supports not (backdrop-filter: blur(20px) opacity(0.5)) {
-      .popup:before {
-        background-color: rgba(0, 0, 0, 0.4); } }
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.7); }
   .popup-form {
     position: relative;
     z-index: 1;
