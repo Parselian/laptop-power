@@ -441,7 +441,7 @@ button {
       font-size: 26px;
       margin-bottom: 10px; }
     .advantages__slide-text {
-      font-size: 14px; }
+      font-size: 16px; }
   .advantages__static {
     margin-bottom: 30px;
     display: flex;
@@ -474,11 +474,25 @@ button {
       color: #FFF;
       background-color: #000; }
     .advantages__controls-button {
+      position: relative;
       padding: 15px 30px;
       display: flex;
-      align-items: center; }
+      align-items: center;
+      cursor: pointer;
+      transition: background-color .2s; }
       .advantages__controls-buttons {
         padding: 0 10px; }
+      .advantages__controls-button_active, .advantages__controls-button:hover {
+        background-color: #B3FEBF; }
+      .advantages__controls-button:after {
+        position: absolute;
+        content: '';
+        bottom: -14px;
+        left: 50%;
+        width: 90%;
+        height: 1px;
+        background-color: #ebebeb;
+        transform: translateX(-50%); }
       .advantages__controls-button:not(:last-child) {
         margin-bottom: 24px; }
       .advantages__controls-button-icon {
@@ -488,6 +502,17 @@ button {
       .advantages__controls-button-title {
         margin: 0;
         font-size: 18px; }
+    .advantages__controls-more {
+      display: none;
+      width: 35px;
+      height: 35px;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+      fill: #9E9E9E;
+      transition: .2s; }
+      .advantages__controls-more:hover {
+        fill: #FF9900; }
 
 .reviews {
   background-color: #EEEBDD; }
@@ -917,7 +942,25 @@ button {
     color: #FFF;
     opacity: 0.5; }
 
+@media (max-width: 1400px) {
+  .advantages__slide-text {
+    font-size: 14px; } }
+
 @media (max-width: 1200px) {
+  .prices__common-block {
+    height: 250px; }
+    .prices__common-block-name {
+      font-size: 18px; }
+  .advantages__info {
+    width: 60%; }
+  .advantages__slide {
+    flex-direction: column; }
+  .advantages__static-item {
+    width: 49%; }
+    .advantages__static-item:nth-child(-n+3) {
+      margin-bottom: unset; }
+    .advantages__static-item:nth-child(-n+4) {
+      margin-bottom: 20px; }
   .steps__block {
     max-width: 200px; }
     .steps__block-number {
@@ -993,6 +1036,31 @@ button {
     .delivery-form__img {
       width: 310px;
       right: -150px; }
+  .advantages__wrap {
+    flex-direction: column-reverse; }
+  .advantages__col {
+    width: 100%;
+    max-width: 100%; }
+  .advantages__slide {
+    flex-direction: row; }
+  .advantages__static {
+    justify-content: initial; }
+    .advantages__static-item {
+      width: 32%; }
+      .advantages__static-item:nth-child(-n+4) {
+        margin-bottom: unset; }
+      .advantages__static-item:nth-child(-n+3) {
+        margin-bottom: 20px; }
+  .advantages__controls-button {
+    width: 49%; }
+    .advantages__controls-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; }
+  .advantages__button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
   .reviews__slide-text {
     font-size: 16px;
     text-align: center; }
@@ -1076,6 +1144,8 @@ button {
     margin-top: 30px; }
   .prices__wrap {
     margin-bottom: 170px; }
+  .prices__common-block {
+    height: 200px; }
   .delivery-form {
     position: relative;
     margin-left: auto;
@@ -1090,6 +1160,24 @@ button {
       left: 50%;
       right: unset;
       transform: translateX(-50%); }
+  .advantages__title {
+    text-align: center; }
+  .advantages__slide {
+    flex-direction: column;
+    text-align: center; }
+    .advantages__slide-img {
+      width: 100%;
+      max-width: unset;
+      min-width: unset;
+      height: 270px;
+      object-fit: cover; }
+  .advantages__controls-button {
+    padding: 15px 13px; }
+    .advantages__controls-button-icon {
+      width: 35px;
+      height: 35px; }
+    .advantages__controls-button-text {
+      font-size: 14px; }
   .reviews__slide-rating-title {
     font-size: 20px; }
   .reviews__slide-reviewer-name {
@@ -1149,6 +1237,12 @@ button {
     grid-template-areas: 'firs firs' 'second third' 'fourth fifth' 'sixth seventh'; }
   .prices__pricelist-item-name {
     font-size: 14px; }
+  .advantages__static-item {
+    width: 49%; }
+    .advantages__static-item:nth-child(-n+3) {
+      margin-bottom: unset; }
+    .advantages__static-item:nth-child(-n+4) {
+      margin-bottom: 20px; }
   .reviews__slide {
     position: relative; }
     .reviews__slide-info {
@@ -1203,6 +1297,8 @@ button {
     .promo__button:not(:last-child) {
       margin-right: 0;
       margin-bottom: 15px; }
+  .prices__common-block {
+    height: 170px; }
   .delivery-form form {
     display: flex;
     flex-direction: column;
@@ -1212,6 +1308,26 @@ button {
   .delivery-form__input {
     margin-right: 0;
     margin-bottom: 15px; }
+  .advantages__static {
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content; }
+    .advantages__static-item {
+      width: 220px; }
+      .advantages__static-item:nth-child(-n+4) {
+        margin-bottom: unset; }
+      .advantages__static-item:not(:last-child) {
+        margin-bottom: 20px; }
+  .advantages__controls {
+    padding-bottom: 30px; }
+    .advantages__controls-button {
+      margin-bottom: 40px;
+      width: 100%; }
+      .advantages__controls-buttons {
+        flex-direction: column; }
+    .advantages__controls-more {
+      display: block; }
   .reviews__slide-text {
     font-size: 14px; }
   .steps__block-text {

@@ -340,7 +340,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<div class="advantages__controls-button-text">Ремонт от 20 минут</div>
 					</div>
 				</div>
-				<div class="advantages__controls-button">
+				<div class="advantages__controls-button advantages__controls-button_active">
 					<svg class="advantages__controls-button-icon">
 						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
 					</svg>
@@ -377,6 +377,10 @@ require_once(__DIR__ . '/assets/configs/config.php');
 					</div>
 				</div>
 			</div>
+
+			<svg class="advantages__controls-more">
+				<use xlink:href="./assets/stack/sprite.svg#faq-arrow"></use>
+			</svg>
 		</div>
 	</div>
 </section>

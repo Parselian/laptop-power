@@ -38,7 +38,7 @@
       margin-bottom: 10px;
     }
     &-text {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   &__static {
@@ -82,9 +82,25 @@
         padding: 0 10px;
       }
 
+      position: relative;
       padding: 15px 30px;
       display: flex;
       align-items: center;
+      cursor: pointer;
+      transition: background-color .2s;
+      &_active, &:hover {
+        background-color: $delivery-feature-bg-color;
+      }
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: -14px;
+        left: 50%;
+        width: 90%;
+        height: 1px;
+        background-color: lighten($border-color, 30%);
+        transform: translateX(-50%);
+      }
       &:not(:last-child) {
         margin-bottom: 24px;
       }
@@ -96,6 +112,19 @@
       &-title {
         margin: 0;
         font-size: 18px;
+      }
+    }
+    &-more {
+      display: none;
+      width: 35px;
+      height: 35px;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+      fill: $border-color;
+      transition: .2s;
+      &:hover {
+        fill: $interaction-color;
       }
     }
   }
