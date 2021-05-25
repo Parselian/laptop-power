@@ -47,17 +47,29 @@ button {
 }
 
 .button {
-  padding: 10px 25px;
+  padding: 9px 24px;
+  border: 2px solid transparent;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  transition: .2s;
   &_callback {
     color: $alt-text-color;
     background-color: $accent-color;
+    &:hover {
+      color: $accent-color;
+      background-color: transparent;
+      border-color: $accent-color
+    }
   }
   &_accent {
     background-color: $interaction-color;
     color: $alt-text-color;
+    &:hover {
+      background-color: transparent;
+      color: $interaction-color;
+      border-color: $interaction-color;
+    }
     &-transparent {
       padding: 8px 25px;
       color: $interaction-color;
@@ -66,6 +78,10 @@ button {
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       border-radius: 5px;
+      &:hover {
+        background-color: $interaction-color;
+        color: $alt-text-color;
+      }
     }
   }
 }

@@ -20,9 +20,13 @@
       color: $border-color;
       background: none;
       border-bottom: 1px solid $border-color;
+      transition: .2s;
       &_active {
         color: $accent-color;
         border-color: $accent-color;
+      }
+      &:hover {
+        color: $accent-color;
       }
     }
   }
@@ -41,10 +45,19 @@
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       border-radius: 5px;
+      transition: .2s;
+      &:hover {
+        color: $interaction-color;
+        border-color: $interaction-color;
+      }
       &_active {
         color: $alt-text-color;
         background-color: $interaction-color;
         border-color: transparent;
+         &:hover {
+          color: $alt-text-color;
+          border-color: $interaction-color;
+        }
       }
       &:not(:last-child) {
         margin-right: 15px;
@@ -67,6 +80,7 @@
           'fourth fifth sixth seventh';
       }
       position: relative;
+      display: none;
       height: 300px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
@@ -155,8 +169,40 @@
     margin-bottom: 40px;
     padding-left: 0;
     //max-width: 1146px;
+    display: none;
     font-size: 18px;
     color: $alt-text-color;
+    overflow-y: scroll;
+    transition: .5s;
+    &::-webkit-scrollbar {
+      width: 8px;               /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;        /* color of the tracking area */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $border-color;    /* color of the scroll thumb */
+      border-radius: 20px;       /* roundness of the scroll thumb */
+      border: 3px solid $border-color;  /* creates padding around scroll thumb */
+    }
+    &_excerpt {
+      height: 480px;
+    }
+    &-wrap {
+      position: relative;
+      &:after {
+        position: absolute;
+        content: '';
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+        background: rgb(47,47,47);
+        background: linear-gradient(0deg, rgba(47,47,47,1) 0%, rgba(0,212,255,0) 100%);
+      }
+    }
     &-item {
       display: flex;
       padding: 10px 5px;
@@ -164,6 +210,9 @@
       align-items: center;
       border-bottom: 1px solid $border-color;
       cursor: pointer;
+      &:last-child {
+        margin-bottom: 50px;
+      }
       &:hover {
         .prices {
           &__pricelist {
@@ -198,6 +247,8 @@
       }
     }
     &-unroll {
+      position: relative;
+      z-index: 99;
       margin-left: auto;
       margin-right: auto;
       display: block;

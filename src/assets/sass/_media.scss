@@ -54,6 +54,11 @@
     }
   }
   .team {
+    &__certificates {
+      &-slider {
+        width: 90%;
+      }
+    }
     &__card {
       width: 220px;
       &-img {
@@ -566,6 +571,16 @@
   }
   .reviews {
     &__slide {
+      &r {
+        &-arrow {
+          &_prev {
+            left: -15px;
+          }
+          &_next {
+            right: -15px;
+          }
+        }
+      }
       position: relative;
       &-info {
         flex-direction: column;
@@ -578,8 +593,8 @@
         }
         &-number {
           position: absolute;
-          top: 0;
-          right: 0;
+          top: -15px;
+          right: -15px;
         }
       }
       &-reviewer {
@@ -593,6 +608,13 @@
         &-img {
           margin-right: 15px;
         }
+      }
+    }
+  }
+  .team {
+    &__certificates {
+      &-slider {
+        width: 95%;
       }
     }
   }
@@ -643,7 +665,7 @@
       padding: 30px 20px;
       &_order {
         overflow-y: auto;
-        height: 80%;
+        max-height: 80%;
       }
       &__title {
         font-size: 28px;
@@ -656,6 +678,32 @@
 }
 
 @media (max-width: 480px) {
+  .burger {
+    &-btn {
+      width: 35px;
+      span {
+        height: 3px;
+        margin: 4px 0px;
+      }
+      input {
+        &[type="checkbox"]:checked {
+          &~span {
+            &:nth-of-type(1) {
+              transform: rotatez(45deg) translate(5px, 1px);
+            }
+            &:nth-of-type(3) {
+              transform: translate(15px, -5px) rotatez(45deg);
+            }
+          }
+        }
+      }
+    }
+    &-menu {
+      &_open {
+        top: 92px;
+      }
+    }
+  }
   .header {
     &__contacts {
       display: none;
@@ -814,6 +862,22 @@
   .prices {
     &__devices {
       font-size: 20px;
+    }
+  }
+  .reviews {
+    &__slide {
+      padding: 20px 20px 30px;
+      &-reviewer {
+        width: 100%;
+        flex-direction: column-reverse;
+        align-items: center;
+        &-img {
+          margin-right: 0;
+        }
+        &-name, &-problem {
+          text-align: center;
+        }
+      }
     }
   }
   .popup {

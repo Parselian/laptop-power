@@ -1,5 +1,9 @@
 <?php
 require_once(__DIR__ . '/assets/configs/config.php');
+require_once(__DIR__ . '/assets/configs/db-cfg.php');
+
+$get_devices_data = mysqli_query($connect, 'SELECT * FROM devices')
+or die('GET devices data failed' . mysqli_error($connect));
 ?>
 <!doctype html>
 <html lang="ru">
@@ -18,30 +22,31 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		  crossorigin="anonymous" referrerpolicy="no-referrer"/>
 	<link rel="stylesheet" href="./assets/css/style.css?<?= time(); ?>">
 	<title>Laptop Power</title>
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
 <div class="burger-menu">
 	<ul class="burger-menu__list">
 		<li class="burger-menu__list-item">
-			<a href="#" class="burger-menu__list-link">Цены</a>
+			<a href="#prices" class="burger-menu__list-link">Цены</a>
+			<svg class="burger-menu__list-item-icon">
+				<use xlink:href="./assets/images/stack/sprite.svg#right-arrow"></use>
+			</svg>
+		</li>
+		<li class="burger-menu__list-item">
+			<a href="#advantages" class="burger-menu__list-link">О нас</a>
 			<svg class="burger-menu__list-item-icon">
 				<use xlink:href="./images/stack/sprite.svg#right-arrow"></use>
 			</svg>
 		</li>
 		<li class="burger-menu__list-item">
-			<a href="#" class="burger-menu__list-link">О нас</a>
+			<a href="#reviews" class="burger-menu__list-link">Отзывы</a>
 			<svg class="burger-menu__list-item-icon">
 				<use xlink:href="./images/stack/sprite.svg#right-arrow"></use>
 			</svg>
 		</li>
 		<li class="burger-menu__list-item">
-			<a href="#" class="burger-menu__list-link">Отзывы</a>
-			<svg class="burger-menu__list-item-icon">
-				<use xlink:href="./images/stack/sprite.svg#right-arrow"></use>
-			</svg>
-		</li>
-		<li class="burger-menu__list-item">
-			<a href="#" class="burger-menu__list-link">Контакты</a>
+			<a href="#contacts" class="burger-menu__list-link">Контакты</a>
 			<svg class="burger-menu__list-item-icon">
 				<use xlink:href="./images/stack/sprite.svg#right-arrow"></use>
 			</svg>
@@ -56,10 +61,10 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				<use xlink:href="./assets/stack/sprite.svg#logo"></use>
 			</svg>
 			<nav class="header__col header__nav">
-				<a href="#" class="header__nav-item">Цены</a>
-				<a href="#" class="header__nav-item">О нас</a>
-				<a href="#" class="header__nav-item">Отзывы</a>
-				<a href="#" class="header__nav-item">Контакты</a>
+				<a href="#prices" class="header__nav-item">Цены</a>
+				<a href="#advantages" class="header__nav-item">О нас</a>
+				<a href="#reviews" class="header__nav-item">Отзывы</a>
+				<a href="#contacts" class="header__nav-item">Контакты</a>
 			</nav>
 			<div class="header__col">
 				<div class="header__contacts">
@@ -87,7 +92,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		</ul>
 		<div class="promo__buttons">
 			<button class="button button_callback promo__button open-order-form">Срочный ремонт</button>
-			<button class="button button_accent-transparent promo__button">Получить скидку</button>
+			<button class="button button_accent-transparent promo__button open-discount-form">Получить скидку</button>
 		</div>
 	</div>
 </section>
@@ -115,131 +120,27 @@ require_once(__DIR__ . '/assets/configs/config.php');
 	</div>
 </section>
 
-<section class="prices">
+<section id="prices" class="prices">
 	<div class="container prices__wrap">
 		<h2 class="section__title section__title_alt prices__title">Услуги сервисного центра <?= $company_name; ?></h2>
 
 		<div class="prices__devices">
-			<button data-device="laptops" class="prices__devices-button">Ноутбуки</button>
-			<button data-device="monoblocks" class="prices__devices-button prices__devices-button_active">Моноблоки</button>
-			<button data-device="computers" class="prices__devices-button">Компьютеры</button>
-			<button data-device="servers" class="prices__devices-button">Серверы</button>
+
 		</div>
+
 		<div class="prices__models">
-			<button data-model="Acer" class="prices__models-button">Acer</button>
-			<button data-model="Asus" class="prices__models-button prices__models-button_active">Asus</button>
-			<button data-model="Apple" class="prices__models-button">Apple</button>
-			<button data-model="Samsung" class="prices__models-button">Samsung</button>
-			<button data-model="Huawei" class="prices__models-button">Huawei</button>
-			<button data-model="Xiaomi" class="prices__models-button">Xiaomi</button>
-			<button data-model="Honor" class="prices__models-button">Honor</button>
+
 		</div>
 
 		<div class="prices__common-blocks">
-			<div class="prices__common-block">
-				<picture>
-					<source srcset="./assets/images/webp/display-replacement.webp" type="image/webp">
-					<img src="./assets/images/display-replacement.jpg" alt="замена дисплея на ноутбуке" class="prices__common-block-img">
-				</picture>
-				<div class="prices__common-block-info">
-					<span class="prices__common-block-name">Замена дисплея</span>
-					<span class="prices__common-block-price">1 000 ₽</span>
-				</div>
-			</div>
 
-			<div class="prices__common-block">
-				<picture>
-					<source srcset="./assets/images/webp/laptop-clean.webp" type="image/webp">
-					<img src="./assets/images/laptop-clean.jpg" alt="Чистка ноутбука" class="prices__common-block-img">
-				</picture>
-				<div class="prices__common-block-info">
-					<span class="prices__common-block-name">Чистка ноутбука</span>
-					<span class="prices__common-block-price line-break">390 ₽</span>
-				</div>
-			</div>
-
-			<div class="prices__common-block">
-				<picture>
-					<source srcset="./assets/images/webp/keyboard-repair.webp" type="image/webp">
-					<img src="./assets/images/keyboard-repair.jpg" alt="Ремонт клавиатуры" class="prices__common-block-img">
-				</picture>
-				<div class="prices__common-block-info">
-					<span class="prices__common-block-name">Ремонт клавиатуры</span>
-					<span class="prices__common-block-price line-break">250 ₽</span>
-				</div>
-			</div>
-
-			<div class="prices__common-block">
-				<picture>
-					<source srcset="./assets/images/webp/cooling-system-repair.webp" type="image/webp">
-					<img src="./assets/images/cooling-system-repair.jpg" alt="Ремонт системы охлаждения" class="prices__common-block-img">
-				</picture>
-				<div class="prices__common-block-info">
-					<span class="prices__common-block-name">Ремонт системы охлаждения</span>
-					<span class="prices__common-block-price line-break">390 ₽</span>
-				</div>
-			</div>
-
-			<div class="prices__common-block">
-				<picture>
-					<source srcset="./assets/images/webp/power-chains-repair.webp" type="image/webp">
-					<img src="./assets/images/power-chains-repair.jpg" alt="Ремонт цепей питания" class="prices__common-block-img">
-				</picture>
-				<div class="prices__common-block-info">
-					<span class="prices__common-block-name">Ремонт цепей питания</span>
-					<span class="prices__common-block-price line-break">590 ₽</span>
-				</div>
-			</div>
-
-			<div class="prices__common-block">
-				<picture>
-					<source srcset="./assets/images/webp/motherboard-repair.webp" type="image/webp">
-					<img src="./assets/images/motherboard-repair.jpg" alt="Ремонт цепей питания" class="prices__common-block-img">
-				</picture>
-				<div class="prices__common-block-info">
-					<span class="prices__common-block-name">Ремонт материнской платы</span>
-					<span class="prices__common-block-price line-break">690 ₽</span>
-				</div>
-			</div>
-
-			<div class="prices__common-block">
-				<picture>
-					<source srcset="./assets/images/webp/software-install.webp" type="image/webp">
-					<img src="./assets/images/software-install.jpg" alt="Установка программ" class="prices__common-block-img">
-				</picture>
-				<div class="prices__common-block-info">
-					<span class="prices__common-block-name">Установка и настройка ПО</span>
-					<span class="prices__common-block-price line-break">250 ₽</span>
-				</div>
-			</div>
 		</div>
 
-		<ul class="prices__pricelist">
-			<li class="prices__pricelist-item">
-				<span class="prices__pricelist-item-name">Ремонт материнской платы ноутбука</span>
-				<div class="prices__pricelist-item-wrap">
-					<div class="prices__pricelist-item-label">+ скидка 20%</div>
-					<button class="prices__pricelist-item-button open-order-form">Вызвать мастера</button>
-					<div class="prices__pricelist-item-price">1 990 ₽</div>
-				</div>
-			</li>
-			<li class="prices__pricelist-item">
-				<span class="prices__pricelist-item-name">Ремонт материнской платы ноутбука</span>
-				<div class="prices__pricelist-item-wrap">
-					<div class="prices__pricelist-item-label">+ скидка 20%</div>
-					<button class="prices__pricelist-item-button open-order-form">Вызвать мастера</button>
-					<div class="prices__pricelist-item-price">1 990 ₽</div>
-				</div>
-			</li>
-			<li class="prices__pricelist-item">
-				<span class="prices__pricelist-item-name">Ремонт материнской платы ноутбука</span>
-				<div class="prices__pricelist-item-wrap">
-					<div class="prices__pricelist-item-label">+ скидка 20%</div>
-					<button class="prices__pricelist-item-button open-order-form">Вызвать мастера</button>
-					<div class="prices__pricelist-item-price">1 990 ₽</div>
-				</div>
-			</li>
-		</ul>
+		<div class="prices__pricelist-wrap">
+			<ul class="prices__pricelist">
+
+			</ul>
+		</div>
 
 		<button class="button button_accent prices__pricelist-unroll">Показать всё</button>
 	</div>
@@ -250,7 +151,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			<div class="delivery-form__subtitle">Оставьте свой номер телефона <span class="line-break">перезвоним через 2 минуты</span>
 			</div>
 			<form action="./assets/configs/mail.php" method="POST">
-				<input type="text" name="user_phone" class="delivery-form__input" placeholder="+7 (___) ___-__-__">
+				<input type="text" name="user_phone" class="delivery-form__input" placeholder="+7 (___) ___-__-__" required>
 				<button type="submit" class="button button_callback delivery-form__button">Перезвоните мне</button>
 			</form>
 			<picture>
@@ -261,13 +162,13 @@ require_once(__DIR__ . '/assets/configs/config.php');
 	</div>
 </section>
 
-<section class="advantages">
+<section id="advantages" class="advantages">
 	<div class="container advantages__wrap">
 
 		<div class="advantages__col advantages__info">
 			<h3 class="advantages__title">Наши преимущества</h3>
 			<div class="advantages__slider">
-				<div class="advantages__slide advantages__slide_active" data-slide="diagnostics">
+				<div class="advantages__slide" data-slide="diagnostics">
 					<picture>
 						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
 						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
@@ -284,20 +185,19 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						</p>
 					</div>
 				</div>
-				<div class="advantages__slide" data-slide="deadlines">
+				<div class="advantages__slide advantages__slide_active" data-slide="deadlines">
 					<picture>
 						<source srcset="./assets/images/webp/steps-bg.webp" type="image/webp">
 						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
 					</picture>
 					<div class="advantages__slide-info">
-						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<h4 class="advantages__slide-title">Срочный ремонт</h4>
 						<p class="advantages__slide-text">
-							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
-							известен
-							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
-							выполнит
-							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
-							ремонт.
+							Выявив типовые неполадки, мы произведем срочный ремонт Вашей компьютерной техники. Это означает что все
+							восстановительные операции займут не более 3 часов. Стоимость починки в экспресс-режиме является разумной и
+							устроит заказчиков с разным финансовым положением. Проблемы, которые требуют применения сложной паяльной
+							аппаратуры, устраняются в заранее оговоренные сроки. Мы не используем наценок и не гонимся за большим
+							количеством клиентов, поэтому все предоставляемые услуги являются эффективными и качественными.
 						</p>
 					</div>
 				</div>
@@ -307,14 +207,13 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
 					</picture>
 					<div class="advantages__slide-info">
-						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<h4 class="advantages__slide-title">Бесплатный выезд</h4>
 						<p class="advantages__slide-text">
-							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
-							известен
-							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
-							выполнит
-							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
-							ремонт.
+							Если ваша техника нуждается в квалифицированном обслуживании или ремонте, вы можете вернуть ей
+							функциональность, не выходя из дома. Для этого свяжитесь с менеджером по контактному телефону, оформите заказ и
+							воспользуйтесь доставкой, которую осуществляет наша курьерская служба. Наш сотрудник в течение часа со всеми
+							необходимыми документами выедет на указанный адрес. Доставка техники в мастерскую производится на бесплатной
+							основе.
 						</p>
 					</div>
 				</div>
@@ -324,14 +223,13 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
 					</picture>
 					<div class="advantages__slide-info">
-						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<h4 class="advantages__slide-title">Оффициальные поставщики</h4>
 						<p class="advantages__slide-text">
-							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
-							известен
-							срок и стоимость ремонта. Если вас интересует типичная услуга (например, замена клавиши ноутбука), то инженер
-							выполнит
-							осмотр техники на возможность оказания данной услуги, назовет стоимость, заполнит договор и после этого начнется
-							ремонт.
+							Мы устанавливаем только оригинальные компоненты, которые поступают с завода-изготовителя напрямую. Налаженная
+							связь с производителем дает возможность заменять модули и узлы по минимальной цене. Для проведения быстрых и
+							надежных восстановительных работ мы заранее сформировали на складе большой ассортимент комплектующих. Выполняя
+							их установку мы обеспечиваем Вашей технике стабильную и долгую службу. На все запчасти предоставляется
+							пожизненная гарантия.
 						</p>
 					</div>
 				</div>
@@ -341,7 +239,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<img src="./assets/images/steps-bg.jpg" alt="Срочный ремонт" class="advantages__slide-img">
 					</picture>
 					<div class="advantages__slide-info">
-						<h4 class="advantages__slide-title">Бесплатная диагностика</h4>
+						<h4 class="advantages__slide-title">Пожизненная гарантия</h4>
 						<p class="advantages__slide-text">
 							Диагностика необходима для того, чтобы определить точную причину неисправности. Только после диагностики будет
 							известен
@@ -398,7 +296,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		<div class="advantages__col advantages__controls">
 			<h3 class="advantages__controls-title">Преимущества</h3>
 			<div class="advantages__controls-buttons">
-				<div class="advantages__controls-button" data-btn-slide="deadlines">
+				<div class="advantages__controls-button advantages__controls-button_active" data-btn-slide="deadlines">
 					<svg class="advantages__controls-button-icon">
 						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
 					</svg>
@@ -407,9 +305,9 @@ require_once(__DIR__ . '/assets/configs/config.php');
 						<div class="advantages__controls-button-text">Ремонт от 20 минут</div>
 					</div>
 				</div>
-				<div class="advantages__controls-button advantages__controls-button_active" data-btn-slide="warranty">
+				<div class="advantages__controls-button" data-btn-slide="warranty">
 					<svg class="advantages__controls-button-icon">
-						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+						<use xlink:href="./assets/stack/sprite.svg#guarantee"></use>
 					</svg>
 					<div class="advantages__controls-button-info">
 						<h5 class="advantages__controls-button-title">Гарантия</h5>
@@ -418,7 +316,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				</div>
 				<div class="advantages__controls-button" data-btn-slide="delivery">
 					<svg class="advantages__controls-button-icon">
-						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+						<use xlink:href="./assets/stack/sprite.svg#delivery"></use>
 					</svg>
 					<div class="advantages__controls-button-info">
 						<h5 class="advantages__controls-button-title">Доставка</h5>
@@ -427,7 +325,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				</div>
 				<div class="advantages__controls-button" data-btn-slide="diagnostics">
 					<svg class="advantages__controls-button-icon">
-						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+						<use xlink:href="./assets/stack/sprite.svg#search"></use>
 					</svg>
 					<div class="advantages__controls-button-info">
 						<h5 class="advantages__controls-button-title">Диагностика</h5>
@@ -436,7 +334,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				</div>
 				<div class="advantages__controls-button" data-btn-slide="parts">
 					<svg class="advantages__controls-button-icon">
-						<use xlink:href="./assets/stack/sprite.svg#clock"></use>
+						<use xlink:href="./assets/stack/sprite.svg#puzzle"></use>
 					</svg>
 					<div class="advantages__controls-button-info">
 						<h5 class="advantages__controls-button-title">Запчасти</h5>
@@ -495,53 +393,62 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			В сервисном центре <?= $company_name ?> работают только <span class="line-break">мастера с опытом работы от 3-х лет.</span>
 		</div>
 
+		<div class="team__certificates-wrap">
+			<div class="team__certificates-slider">
+				<img src="./assets/images/certificate_1.jpg" alt="сертификат 1" class="team__certificates-slide">
+				<img src="./assets/images/certificate_2.jpg" alt="сертификат 2" class="team__certificates-slide">
+				<img src="./assets/images/certificate_3.jpg" alt="сертификат 3" class="team__certificates-slide">
+				<img src="./assets/images/certificate_4.jpg" alt="сертификат 4" class="team__certificates-slide">
+			</div>
+		</div>
+
 		<div class="team__cards">
 			<div class="team__card">
 				<picture>
 					<source srcset="./assets/images/webp/engineer_1.webp" type="image/webp">
 					<img src="./assets/images/engineer_1.jpg" alt="Фото инженера" class="team__card-img">
 				</picture>
-				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-name">Владимир Сухорослов</h3>
 				<h3 class="team__card-position">Старший инженер</h3>
 				<div class="team__card-experience">Ремонтирует компьютерную технику с 2014 г.</div>
-				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+				<a href="#" class="team__card-link" data-slide-ind="0">Посмотреть сертификат</a>
 			</div>
 
 			<div class="team__card">
 				<picture>
 					<source srcset="./assets/images/webp/engineer_2.webp" type="image/webp">
 					<img src="./assets/images/engineer_2.jpg" alt="Фото инженера" class="team__card-img"></picture>
-				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-name">Андрей Бондарев</h3>
 				<h3 class="team__card-position">Инженер</h3>
 				<div class="team__card-experience">Ремонтирует компьютерную технику с 2017 г.</div>
-				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+				<a href="#" class="team__card-link" data-slide-ind="1">Посмотреть сертификат</a>
 			</div>
 
 			<div class="team__card">
 				<picture>
 					<source srcset="./assets/images/webp/engineer_3.webp" type="image/webp">
 					<img src="./assets/images/engineer_3.jpg" alt="Фото инженера" class="team__card-img"></picture>
-				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-name">Александр Беляшов</h3>
 				<h3 class="team__card-position">Инженер</h3>
 				<div class="team__card-experience">Ремонтирует компьютерную технику с 2018 г.</div>
-				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+				<a href="#" class="team__card-link" data-slide-ind="2">Посмотреть сертификат</a>
 			</div>
 
 			<div class="team__card">
 				<picture>
 					<source srcset="./assets/images/webp/engineer_4.webp" type="image/webp">
 					<img src="./assets/images/engineer_4.jpg" alt="Фото инженера" class="team__card-img"></picture>
-				<h3 class="team__card-name">Илья Федоров</h3>
+				<h3 class="team__card-name">Глеб Гурдынов</h3>
 				<h3 class="team__card-position">Инженер</h3>
 				<div class="team__card-experience">Ремонтирует компьютерную технику с 2016 г.</div>
-				<a href="#" class="team__card-link">Посмотреть сертификат</a>
+				<a href="#" class="team__card-link" data-slide-ind="3">Посмотреть сертификат</a>
 			</div>
 		</div>
 		<button class="button button_callback team__button open-order-form">Вызвать мастера</button>
 	</div>
 </section>
 
-<section class="reviews">
+<section id="reviews" class="reviews">
 	<div class="container reviews__wrap">
 		<h2 class="section__title">Нас выбирают клиенты</h2>
 		<div class="section__subtitle">
@@ -551,10 +458,34 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		<div class="reviews__slider">
 			<div class="reviews__slide">
 				<p class="reviews__slide-text">
-					Обращался в эту мастерскую после того как уронил макбук, у которого разбился экран и погнулся корпус. Неисправность
-					устранили, для этого пришлось заменить экран и винчестер. После ремонта ноутбук работает без замечаний. Из неприятных
-					моментов только ситуация с неперезвоном- пообещали что мастер перезвонит через 5 минут, но так и не позвонил. Пришлось
-					звонить самому. В остальном все хорошо.
+					Нужно было быстро починить ноутбук, в нём вся моя работа и все данные, времени ехать в сервис у меня не было, решила
+					вызвать мастера прямо в офис, через 20 минут прибыл инженер, настоящий профессионал! При мне провёл диагностику и
+					устранил проблему, заменил клавиатуру за 25 минут. Даже не думала, что можно решить все проблемы с телефоном меньше
+					чем за час! Удобный сервис, бесплатно приедут в любое место в городе, будь то квартира, офис или кафе, всё на высшем
+					уровне!
+				</p>
+				<div class="reviews__slide-info">
+					<div class="reviews__slide-rating">
+						<div class="reviews__slide-rating-title">Рейтинг:</div>
+						<div class="reviews__slide-rating-number">4.7</div>
+					</div>
+					<div class="reviews__slide-reviewer">
+						<div class="reviews__slide-reviewer-info">
+							<div class="reviews__slide-reviewer-name">Евгения З.</div>
+							<div class="reviews__slide-reviewer-problem">Замена клавиатуры на ноутбуке</div>
+						</div>
+						<picture>
+							<source srcset="./assets/images/webp/reviewer_1.webp" type="image/webp">
+							<img src="./assets/images/reviewer_1.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
+						</picture>
+					</div>
+				</div>
+			</div>
+			<div class="reviews__slide">
+				<p class="reviews__slide-text">
+					Классно! Обращался для замены разбитого экрана на ноутбуке, инженер приехал через 30 минут после заявки, очень
+					вежливый и пунктуальный мастер, ремонт проводился при мне, для меня это важно! Ребята используют только
+					оригинальные комплектующие, и дают бессрочную гарантию. Я доволен!
 				</p>
 				<div class="reviews__slide-info">
 					<div class="reviews__slide-rating">
@@ -563,12 +494,57 @@ require_once(__DIR__ . '/assets/configs/config.php');
 					</div>
 					<div class="reviews__slide-reviewer">
 						<div class="reviews__slide-reviewer-info">
-							<div class="reviews__slide-reviewer-name">Валентин П.</div>
+							<div class="reviews__slide-reviewer-name">Кирилл М.</div>
 							<div class="reviews__slide-reviewer-problem">Замена матрицы на ноутбуке</div>
 						</div>
 						<picture>
-							<source srcset="./assets/images/webp/reviewer_1.webp" type="image/webp">
-							<img src="./assets/images/reviewer_1.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
+							<source srcset="./assets/images/webp/reviewer_2.webp" type="image/webp">
+							<img src="./assets/images/reviewer_2.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
+						</picture>
+					</div>
+				</div>
+			</div>
+			<div class="reviews__slide">
+				<p class="reviews__slide-text">
+					В Питере в этом году уже 2 раза обращался в данный сервис, первый раз менял аккумулятор на MacBook, второй раз
+					чистил ноутбук, все два ремонта прошли быстро, мастера работают аккуратно и
+					заключают гарантийный договор на работу. Если какие-то проблемы с гаджетами, то всем советую!
+				</p>
+				<div class="reviews__slide-info">
+					<div class="reviews__slide-rating">
+						<div class="reviews__slide-rating-title">Рейтинг:</div>
+						<div class="reviews__slide-rating-number">4.1</div>
+					</div>
+					<div class="reviews__slide-reviewer">
+						<div class="reviews__slide-reviewer-info">
+							<div class="reviews__slide-reviewer-name">Виктор П.</div>
+							<div class="reviews__slide-reviewer-problem">Замена матрицы на ноутбуке</div>
+						</div>
+						<picture>
+							<source srcset="./assets/images/webp/reviewer_3.webp" type="image/webp">
+							<img src="./assets/images/reviewer_3.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
+						</picture>
+					</div>
+				</div>
+			</div>
+			<div class="reviews__slide">
+				<p class="reviews__slide-text">
+					Довольна. Добросовестный, вежливый мастер Сергей Титов. Ремонт произвели в моём присутствии с подробным
+					пояснением о проблеме, что для меня очень важно! Теперь только к вам буду обращаться, спасибо!!!
+				</p>
+				<div class="reviews__slide-info">
+					<div class="reviews__slide-rating">
+						<div class="reviews__slide-rating-title">Рейтинг:</div>
+						<div class="reviews__slide-rating-number">4.4</div>
+					</div>
+					<div class="reviews__slide-reviewer">
+						<div class="reviews__slide-reviewer-info">
+							<div class="reviews__slide-reviewer-name">Александра Р.</div>
+							<div class="reviews__slide-reviewer-problem">Замена матрицы на ноутбуке</div>
+						</div>
+						<picture>
+							<source srcset="./assets/images/webp/reviewer_4.webp" type="image/webp">
+							<img src="./assets/images/reviewer_4.jpg" alt="фото клиента" class="reviews__slide-reviewer-img">
 						</picture>
 					</div>
 				</div>
@@ -645,25 +621,52 @@ require_once(__DIR__ . '/assets/configs/config.php');
 			<h2 class="section__title gallery__title">
 				Галерея
 			</h2>
+
+			<div class="gallery__slider-wrap">
+				<svg class="gallery__slider-close">
+					<use xlink:href="./assets/stack/sprite.svg#close"></use>
+				</svg>
+				<div class="gallery__slider">
+					<picture>
+						<source srcset="./assets/images/webp/gallery_1.webp" type="image/webp">
+						<img src="./assets/images/gallery_1.jpg" alt="Процесс работы" class="gallery__slide"></picture>
+					<picture>
+						<source srcset="./assets/images/webp/gallery_2.webp" type="image/webp">
+						<img src="./assets/images/gallery_2.jpg" alt="Процесс работы" class="gallery__slide"></picture>
+					<picture>
+						<source srcset="./assets/images/webp/gallery_3.webp" type="image/webp">
+						<img src="./assets/images/gallery_3.jpg" alt="Процесс работы" class="gallery__slide"></picture>
+					<picture>
+						<source srcset="./assets/images/webp/gallery_4.webp" type="image/webp">
+						<img src="./assets/images/gallery_4.jpg" alt="Процесс работы" class="gallery__slide"></picture>
+					<picture>
+						<source srcset="./assets/images/webp/gallery_5.webp" type="image/webp">
+						<img src="./assets/images/gallery_5.jpg" alt="Процесс работы" class="gallery__slide"></picture>
+					<picture>
+						<source srcset="./assets/images/webp/gallery_6.webp" type="image/webp">
+						<img src="./assets/images/gallery_6.jpg" alt="Процесс работы" class="gallery__slide"></picture>
+				</div>
+			</div>
+
 			<div class="gallery__images">
 				<picture>
-					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
-					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+					<source srcset="./assets/images/webp/gallery_1.webp" type="image/webp">
+					<img src="./assets/images/gallery_1.jpg" alt="Процесс работы" class="gallery__image" data-slide-ind="0"></picture>
 				<picture>
-					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
-					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+					<source srcset="./assets/images/webp/gallery_2.webp" type="image/webp">
+					<img src="./assets/images/gallery_2.jpg" alt="Процесс работы" class="gallery__image" data-slide-ind="1"></picture>
 				<picture>
-					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
-					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+					<source srcset="./assets/images/webp/gallery_3.webp" type="image/webp">
+					<img src="./assets/images/gallery_3.jpg" alt="Процесс работы" class="gallery__image" data-slide-ind="2"></picture>
 				<picture>
-					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
-					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+					<source srcset="./assets/images/webp/gallery_4.webp" type="image/webp">
+					<img src="./assets/images/gallery_4.jpg" alt="Процесс работы" class="gallery__image" data-slide-ind="3"></picture>
 				<picture>
-					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
-					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+					<source srcset="./assets/images/webp/gallery_5.webp" type="image/webp">
+					<img src="./assets/images/gallery_5.jpg" alt="Процесс работы" class="gallery__image" data-slide-ind="4"></picture>
 				<picture>
-					<source srcset="./assets/images/webp/gallery.webp" type="image/webp">
-					<img src="./assets/images/gallery.jpg" alt="Процесс работы" class="gallery__image"></picture>
+					<source srcset="./assets/images/webp/gallery_6.webp" type="image/webp">
+					<img src="./assets/images/gallery_6.jpg" alt="Процесс работы" class="gallery__image" data-slide-ind="5"></picture>
 			</div>
 		</div>
 	</div>
@@ -674,7 +677,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		<h2 class="section__title questions__title">Остались вопросы?</h2>
 		<div class="section__subtitle questions__subtitle">Оставьте свой номер телефона, мы свяжемся с вами через 2 минуты</div>
 		<form action="" class="questions__form">
-			<input type="text" name="user_phone" class="questions__form-input" placeholder="+7 (___) ___-__-__">
+			<input type="text" name="user_phone" class="questions__form-input" placeholder="+7 (___) ___-__-__" required>
 			<button type="submit" class="button questions__form-button">Перезвоните мне</button>
 		</form>
 		<div class="questions__form-footnote">Нажимая на кнопку "Перезвоните мне" вы соглашаетесь с политикой обработки
@@ -682,7 +685,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 	</div>
 </section>
 
-<section class="contacts">
+<section id="contacts" class="contacts">
 	<div class="container contacts__wrap">
 		<div class="contacts__block">
 			<div class="contacts__block-wrap">
@@ -734,8 +737,8 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		</div>
 		<nav class="footer__col footer__nav">
 			<a href="#prices" class="footer__nav-link">Цены</a>
-			<a href="#about" class="footer__nav-link">О нас</a>
-			<a href="#faq" class="footer__nav-link">Отзывы</a>
+			<a href="#advantages" class="footer__nav-link">О нас</a>
+			<a href="#reviews" class="footer__nav-link">Отзывы</a>
 			<a href="#contacts" class="footer__nav-link">Контакты</a>
 		</nav>
 		<div class="footer__col footer__contacts">
@@ -753,7 +756,8 @@ require_once(__DIR__ . '/assets/configs/config.php');
 <div class="popup popup-order">
 	<form action="" method="POST" class="popup-form popup-form_order">
 		<h2 class="popup-form__title">Заказать ремонт ноутбука со <span class="text_accent">cкидкой 20%</span></h2>
-		<div class="popup-form__subtitle">Оставьте свой номер телефона <span class="line-break">Мы свяжемся с вами через 2 минуты</span></div>
+		<div class="popup-form__subtitle">Оставьте свой номер телефона <span class="line-break">Мы свяжемся с вами через 2 минуты</span>
+		</div>
 		<svg class="popup-form__close">
 			<use xlink:href="./assets/stack/sprite.svg#close"></use>
 		</svg>
@@ -765,7 +769,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				</div>
 				<div class="popup-form__input-wrap">
 					<label for="" class="popup-form__input-label">Ваш телефон</label>
-					<input type="text" name="user_phone" class="popup-form__input" placeholder="+7 (___) ___-__-__">
+					<input type="text" name="user_phone" class="popup-form__input" placeholder="+7 (___) ___-__-__" required>
 				</div>
 				<button type="submit" class="button button_callback popup-form__button">Оставить заявку</button>
 				<div class="popup-form__footnote">
@@ -791,7 +795,8 @@ require_once(__DIR__ . '/assets/configs/config.php');
 <div class="popup popup-discount">
 	<form action="" method="POST" class="popup-form popup-form_order">
 		<h2 class="popup-form__title">Получить <span class="text_accent">cкидку 20%</span> на первый ремонт</h2>
-		<div class="popup-form__subtitle">Оставьте свой номер телефона <span class="line-break">Мы свяжемся с вами через 2 минуты</span></div>
+		<div class="popup-form__subtitle">Оставьте свой номер телефона <span class="line-break">Мы свяжемся с вами через 2 минуты</span>
+		</div>
 		<svg class="popup-form__close">
 			<use xlink:href="./assets/stack/sprite.svg#close"></use>
 		</svg>
@@ -803,7 +808,7 @@ require_once(__DIR__ . '/assets/configs/config.php');
 				</div>
 				<div class="popup-form__input-wrap">
 					<label for="" class="popup-form__input-label">Ваш телефон</label>
-					<input type="text" name="user_phone" class="popup-form__input" placeholder="+7 (___) ___-__-__">
+					<input type="text" name="user_phone" class="popup-form__input" placeholder="+7 (___) ___-__-__" required>
 				</div>
 				<button type="submit" class="button button_callback popup-form__button">Оставить заявку</button>
 				<div class="popup-form__footnote">
@@ -849,5 +854,294 @@ require_once(__DIR__ . '/assets/configs/config.php');
 		integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"
 		referrerpolicy="no-referrer"></script>
 <script src="./assets/js/script.js"></script>
+<script>
+    ymaps.ready(init);
+
+    function init() {
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+            // Координаты центра карты.
+            // Порядок по умолчанию: «широта, долгота».
+            // Чтобы не определять координаты центра карты вручную,
+            // воспользуйтесь инструментом Определение координат.
+            center: [59.952730, 30.305410],
+            // Уровень масштабирования. Допустимые значения:
+            // от 0 (весь мир) до 19.
+            zoom: 12
+        });
+
+        // Создаем многоугольник, используя вспомогательный класс Polygon.
+        var myPolygon = new ymaps.Polygon([
+            // Указываем координаты вершин многоугольника.
+            // Координаты вершин внешнего контура.
+            [
+                [59.975078, 30.213659],
+
+                [60.000106, 30.047842],
+                [60.014200, 29.966648],
+                [60.036775, 29.963400],
+                [60.056372, 30.143077],
+
+                [60.081397, 30.194957],
+                [60.098313, 30.264708],
+                [60.096300, 30.315510],
+                [60.093280, 30.358650],
+                [60.061147, 30.388284],
+                [60.043755, 30.432434],
+                [60.006572, 30.477096],
+                [59.983363, 30.495044],
+                [59.964115, 30.554315],
+                [59.865345, 30.523754],
+                [59.818923, 30.389350],
+                [59.813037, 30.325070],
+                [59.833424, 30.276234],
+                [59.801127, 30.164747],
+                [59.815430, 30.094513],
+                [59.862060, 30.098249],
+                [59.868447, 30.155781],
+                [59.897364, 30.209577],
+                [59.926478, 30.209815],
+                [59.930095, 30.192667],
+                [59.941011, 30.181521],
+                [59.954137, 30.185927],
+                [59.960333, 30.211879],
+                [59.975078, 30.213659],
+            ]
+        ], {
+            // Описываем свойства геообъекта.
+            // Содержимое балуна.
+        }, {
+            // Задаем опции геообъекта.
+            // Цвет заливки.
+            fillColor: '#B3FEBFA0',
+            // Ширина обводки.
+            strokeWidth: 1,
+            strokeColor: '#26CF41FF'
+        });
+
+        // Добавляем многоугольник на карту.
+        myMap.geoObjects.add(myPolygon);
+
+        const glyphServicesParams = {
+            iconLayout: 'default#image',
+            iconImageHref: './assets/images/svg/map-placeholder.svg',
+            iconImageSize: [35, 35]
+        }
+
+        // const glyphEngineersParams = {
+        //     iconLayout: 'default#image',
+        //     // iconImageHref: './img/placeholder-engineer.png',
+        //     iconImageHref: './img/ifixit-engineer-placeholder.svg',
+        //     iconImageSize: [40, 40]
+        // }
+
+        let servicePlacemarks = {
+            sadovaya: new ymaps.Placemark([59.924726, 30.317046], {
+                balloonContentHeader: '<?=$company_name?> на м. Садовая',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            gorkovskaya: new ymaps.Placemark([59.957081, 30.319257], {
+                balloonContentHeader: '<?=$company_name?> на м. Горьковская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            petrogradskaya: new ymaps.Placemark([59.965483, 30.313301], {
+                balloonContentHeader: '<?=$company_name?> на м. Петроградская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            gostinyDvor: new ymaps.Placemark([59.935262, 30.335110], {
+                balloonContentHeader: '<?=$company_name?> на м. Гостиный двор',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            vosstaniya: new ymaps.Placemark([59.927122, 30.359359], {
+                balloonContentHeader: '<?=$company_name?> на м. Площадь Восстания',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            vasileostrovskaya: new ymaps.Placemark([59.940976, 30.280436], {
+                balloonContentHeader: '<?=$company_name?> на м. Василеостровская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            technolozhka: new ymaps.Placemark([59.915926, 30.312586], {
+                balloonContentHeader: '<?=$company_name?> на м. Технологический Институт',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            narvskaya: new ymaps.Placemark([59.899923, 30.273741], {
+                balloonContentHeader: '<?=$company_name?> на м. Нарвская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            mezhdunarodnaya: new ymaps.Placemark([59.875975, 30.376100], {
+                balloonContentHeader: '<?=$company_name?> на м. Международная',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            moskovskaya: new ymaps.Placemark([59.859279, 30.320540], {
+                balloonContentHeader: '<?=$company_name?> на м. Московская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            novocherkasskaya: new ymaps.Placemark([59.930182, 30.416796], {
+                balloonContentHeader: '<?=$company_name?> на м. Новочеркасская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            bolshevikov: new ymaps.Placemark([59.917443, 30.473776], {
+                balloonContentHeader: '<?=$company_name?> на м. Проспект Большевиков',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            muzhestva: new ymaps.Placemark([59.999980, 30.352904], {
+                balloonContentHeader: '<?=$company_name?> на м. Площадь Мужества',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            lenina: new ymaps.Placemark([59.960110, 30.345721], {
+                balloonContentHeader: '<?=$company_name?> на м. Площадь Ленина',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            energetikov: new ymaps.Placemark([59.959632, 30.436838], {
+                balloonContentHeader: '<?=$company_name?> на пр. Энергетиков',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            pionerskaya: new ymaps.Placemark([60.001014, 30.299878], {
+                balloonContentHeader: '<?=$company_name?> на м. Пионерская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            komendantskiy: new ymaps.Placemark([60.014319, 30.252404], {
+                balloonContentHeader: '<?=$company_name?> на м. Комендантский проспект',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            ozerki: new ymaps.Placemark([60.039802, 30.324872], {
+                balloonContentHeader: '<?=$company_name?> на м. Озерки',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            avtovo: new ymaps.Placemark([59.866627, 30.264984], {
+                balloonContentHeader: '<?=$company_name?> на м. Автово',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            zvezdnaya: new ymaps.Placemark([59.832183, 30.363087], {
+                balloonContentHeader: '<?=$company_name?> на м. Звёздная',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            proletarskaya: new ymaps.Placemark([59.869139, 30.460047], {
+                balloonContentHeader: '<?=$company_name?> на м. Пролетарская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            begovaya: new ymaps.Placemark([59.989656, 30.205812], {
+                balloonContentHeader: '<?=$company_name?> на м. Беговая',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            primorskaya: new ymaps.Placemark([59.947552, 30.239507], {
+                balloonContentHeader: '<?=$company_name?> на м. Приморская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            dibenko: new ymaps.Placemark([59.900370, 30.486519], {
+                balloonContentHeader: '<?=$company_name?> на м. Дыбенко',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            elizarovskaya: new ymaps.Placemark([59.889285, 30.426827], {
+                balloonContentHeader: '<?=$company_name?> на м. Елизаровская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            grazhdanka: new ymaps.Placemark([60.038807, 30.402445], {
+                balloonContentHeader: '<?=$company_name?> на м. Гражданский проспект',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            kondratievskiy: new ymaps.Placemark([59.973282, 30.389281], {
+                balloonContentHeader: '<?=$company_name?> на Кондратьевском пр.',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            moskVorota: new ymaps.Placemark([59.888972, 30.327267], {
+                balloonContentHeader: '<?=$company_name?> на м. Московские ворота',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            parnas: new ymaps.Placemark([60.058574, 30.337453], {
+                balloonContentHeader: '<?=$company_name?> на м. Парнас',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            obvodnyKanal: new ymaps.Placemark([59.908715, 30.346258], {
+                balloonContentHeader: '<?=$company_name?> на м. Обводный канал',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            krestOstrov: new ymaps.Placemark([59.972065, 30.273265], {
+                balloonContentHeader: '<?=$company_name?> на м. Крестовский остров',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            akademicheskaya: new ymaps.Placemark([60.010809, 30.398610], {
+                balloonContentHeader: '<?=$company_name?> на м. Академическая',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            dunayskaya: new ymaps.Placemark([59.846634, 30.406242], {
+                balloonContentHeader: '<?=$company_name?> на м. Дунайская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            frunzenskaya: new ymaps.Placemark([59.904083, 30.323250], {
+                balloonContentHeader: '<?=$company_name?> на м. Фрунзенская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            chkalovskaya: new ymaps.Placemark([59.959321, 30.290739], {
+                balloonContentHeader: '<?=$company_name?> на м. Чкаловская',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            udelnaya: new ymaps.Placemark([60.014788, 30.323675], {
+                balloonContentHeader: '<?=$company_name?> на м. Удельная',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            lesnaya: new ymaps.Placemark([59.988010, 30.353747], {
+                balloonContentHeader: '<?=$company_name?> на м. Лесная',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+            petergof: new ymaps.Placemark([59.848085, 30.148520], {
+                balloonContentHeader: '<?=$company_name?> на Петергофском ш.',
+                balloonContentBody: 'Для ремонта запишитесь по телефону: <a href="tel:<?=$phone_link?>"><?=$phone_format?></a>'
+            }, glyphServicesParams),
+        };
+
+        myMap.geoObjects.add(servicePlacemarks['sadovaya']);
+        myMap.geoObjects.add(servicePlacemarks['gorkovskaya']);
+        myMap.geoObjects.add(servicePlacemarks['petrogradskaya']);
+        myMap.geoObjects.add(servicePlacemarks['gostinyDvor']);
+        myMap.geoObjects.add(servicePlacemarks['vosstaniya']);
+        myMap.geoObjects.add(servicePlacemarks['vasileostrovskaya']);
+        myMap.geoObjects.add(servicePlacemarks['technolozhka']);
+        myMap.geoObjects.add(servicePlacemarks['narvskaya']);
+        myMap.geoObjects.add(servicePlacemarks['mezhdunarodnaya']);
+        myMap.geoObjects.add(servicePlacemarks['moskovskaya']);
+        myMap.geoObjects.add(servicePlacemarks['novocherkasskaya']);
+        myMap.geoObjects.add(servicePlacemarks['bolshevikov']);
+        myMap.geoObjects.add(servicePlacemarks['muzhestva']);
+        myMap.geoObjects.add(servicePlacemarks['lenina']);
+        myMap.geoObjects.add(servicePlacemarks['energetikov']);
+        myMap.geoObjects.add(servicePlacemarks['pionerskaya']);
+        myMap.geoObjects.add(servicePlacemarks['komendantskiy']);
+        myMap.geoObjects.add(servicePlacemarks['ozerki']);
+        myMap.geoObjects.add(servicePlacemarks['avtovo']);
+        myMap.geoObjects.add(servicePlacemarks['zvezdnaya']);
+        myMap.geoObjects.add(servicePlacemarks['proletarskaya']);
+        myMap.geoObjects.add(servicePlacemarks['begovaya']);
+        myMap.geoObjects.add(servicePlacemarks['primorskaya']);
+        myMap.geoObjects.add(servicePlacemarks['dibenko']);
+        myMap.geoObjects.add(servicePlacemarks['elizarovskaya']);
+        myMap.geoObjects.add(servicePlacemarks['grazhdanka']);
+        myMap.geoObjects.add(servicePlacemarks['kondratievskiy']);
+        myMap.geoObjects.add(servicePlacemarks['moskVorota']);
+        myMap.geoObjects.add(servicePlacemarks['parnas']);
+        myMap.geoObjects.add(servicePlacemarks['obvodnyKanal']);
+        myMap.geoObjects.add(servicePlacemarks['krestOstrov']);
+        myMap.geoObjects.add(servicePlacemarks['akademicheskaya']);
+        myMap.geoObjects.add(servicePlacemarks['dunayskaya']);
+        myMap.geoObjects.add(servicePlacemarks['frunzenskaya']);
+        myMap.geoObjects.add(servicePlacemarks['chkalovskaya']);
+        myMap.geoObjects.add(servicePlacemarks['udelnaya']);
+        myMap.geoObjects.add(servicePlacemarks['lesnaya']);
+        myMap.geoObjects.add(servicePlacemarks['petergof']);
+
+        myMap.events.add('click', () => {
+            for (let placemark in servicePlacemarks) {
+                servicePlacemarks[placemark].balloon.close();
+            }
+            for (let placemark in engineerPlacemarks) {
+                engineerPlacemarks[placemark].balloon.close();
+            }
+        });
+
+        if (document.documentElement.clientWidth < 992) {
+            myMap.behaviors.disable(['drag']);
+        }
+    }
+</script>
 </body>
 </html>

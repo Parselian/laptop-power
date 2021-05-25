@@ -11,6 +11,26 @@
   &_active {
     display: flex;
   }
+  &-discount {
+    .text_accent {
+      color: $interaction-color;
+    }
+    .popup {
+      &-form {
+        &__button{
+          background-color: $interaction-color;
+        }
+        &__footnote {
+          &-link {
+            color: $interaction-color;
+          }
+        }
+        &__phone {
+          color: $interaction-color;
+        }
+      }
+    }
+  }
   &__bg {
     position: fixed;
     content: '';
@@ -30,7 +50,7 @@
     position: relative;
     z-index: 1;
     padding: 30px 35px;
-    max-width: 700px;
+    max-width: 750px;
     width: 100%;
     background-color: #FFFFFF;
     -webkit-border-radius: 10px;
@@ -60,6 +80,7 @@
       height: 20px;
       fill: $border-color;
       transition: .2s;
+      cursor: pointer;
       &:hover {
         fill: #000000;
       }

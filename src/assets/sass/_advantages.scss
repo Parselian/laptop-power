@@ -87,6 +87,7 @@
     &-button {
       &s {
         padding: 0 10px;
+        overflow: hidden;
       }
 
       position: relative;
@@ -98,6 +99,7 @@
       align-items: center;
       cursor: pointer;
       transition: background-color .2s;
+      overflow: hidden;
       &_active, &:hover {
         background-color: $delivery-feature-bg-color;
       }
@@ -139,8 +141,9 @@
       cursor: pointer;
       fill: $border-color;
       transition: .2s;
-      &:hover {
+      &_active {
         fill: $interaction-color;
+        transform: rotate(180deg);
       }
     }
   }

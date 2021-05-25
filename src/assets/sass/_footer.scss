@@ -13,6 +13,7 @@
   }
   &__nav {
     &-link {
+      position: relative;
       margin-right: 40px;
       color: $alt-text-color;
       font-size: 16px;
@@ -20,6 +21,24 @@
       text-decoration: none;
       &:last-child {
         margin-right: 0;
+      }
+      &:after {
+        position: absolute;
+        content: '';
+        left: unset;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: $accent-color;
+        transition: .3s;
+      }
+      &:hover {
+        &:after {
+          left: 0;
+          right: unset;
+          width: 100%;
+        }
       }
     }
   }
